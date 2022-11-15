@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Mulish', sans-serif;
+}
+
+.container {
+    display: flex;
+
+}
+a {
+    text-decoration: none;
+}
+
+.box-left {
+    background-color: #212936;
+    min-height: 100vh;
+    flex: none;
+}
+
+.top-box-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;;
+    padding-bottom: 16px;
+}
+
+.top-box-left p a {
+    margin-left: 16px;
+    color: #DDE2FF;
+}
+
+
+nav ul li {
+    list-style: none;
+    padding: 16px 48px;
+}
+nav ul li:hover {
+    background-color: #313C4E;
+}
+
+nav ul li a {
+    color: #DDE2FF;
+}
+
+nav ul li i {
+    color: #DDE2FF;
+    padding-right: 8px;
+}
+hr {
+    border: 0.5px solid #313C4E;
+}
+
+.box-right {
+    width: 100%;
+    padding: 16px 32px;
+    flex-grow: 80%;
+}
+
+.top-box-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.top-box-right .right {
+    display: flex;
+    align-items: center;
+}
+
+.top-box-right .right .icon {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+.top-box-right .right .icon p {
+    margin: 0 8px;
+}
+.account {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+.account>p {
+    margin-right: 12px;
+}

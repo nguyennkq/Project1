@@ -1,0 +1,160 @@
+#content{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Mulish', sans-serif;
+}
+
+.clear {
+    content: "";
+    clear: both;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 64px;
+}
+.logo img{
+    width: 200px;
+    height: 150px;
+}
+.menu{
+    margin-left: 200px;
+}
+.menu ul li{
+    display: inline-block;
+    text-decoration: none;
+}
+.menu ul li a{
+    text-decoration: none;
+    padding: 15px;
+    font-size: 18px;
+    color: black;
+}
+.menu :hover{
+    color: #F4694C;
+}
+.button1 button{
+    border: 2px solid #F4694C;
+    background-color: #F4694C;
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+hr{
+    height: 3px;
+    background-color: #F4694C;
+    border: 1px solid #F4694C;
+}
+.button-one{
+    width: 100px;
+    height: 45px;
+    background-color: #F4694C;
+    color: white;
+    margin-top: 16px;
+    border-color: rgb(255 255 255);
+    border-radius: 0.5rem;
+    font-size: 15px;
+}
+.inp-one{
+    text-align: center;
+    padding: 100px 0px 20px 0px;
+}
+.inp-two{
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+}
+
+.inp-three{
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+}
+.inp-four{
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+}
+input{
+    width: 400px;
+    height: 50px;
+    background-color: aliceblue;
+    border: none;
+    border-radius: 0.5rem;
+    position: relative;
+    padding-left: 8px;
+}
+.button-two{
+    width: 260px;
+    height: 50px;
+    background-color: #F4694C;
+    border: #F4694C;
+    border-radius: 0.5rem;  
+    color: white;
+    font-size: 19px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular'; 
+}
+.button-three{
+    width: 260px;
+    height: 50px;
+    background-color: #D8D8D8;
+    border: #D8D8D8;
+    border-radius: 0.5rem;  
+    color: black;
+    font-size: 19px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular'; 
+}
+footer {
+    background-color: #F4694C;
+    margin-top: 24px;
+    padding-bottom: 24px;
+}
+
+.box-footer {
+    display: flex;
+    color: #fff;
+    padding: 24px 64px;
+    justify-content: space-between;
+}
+
+.box-footer>div {
+    width: 300px;
+}
+.box-footer>div p {
+    margin-top: 8px;
+}
+
+.box-footer div p {
+    line-height: 1.6;
+}
+
+.box-footer div p a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+}
+
+.social p {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin: 0 8px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.social p i{
+    font-size: 24px;
+    color: #fff;
+}
+
+.social p i:hover {
+    color: rgb(40, 117, 40);
+}
