@@ -9,7 +9,6 @@ html {
 
 .container {
     display: flex;
-
 }
 a {
     text-decoration: none;
@@ -51,9 +50,7 @@ nav ul li i {
     color: #DDE2FF;
     padding-right: 8px;
 }
-hr {
-    border: 0.5px solid #313C4E;
-}
+
 
 .box-right {
     width: 100%;
@@ -61,23 +58,23 @@ hr {
     flex-grow: 80%;
 }
 
-.top-box-right {
+header{
     display: flex;
     justify-content: space-between;
     align-items: center;    
 }
 
-.top-box-right .right {
+header .right {
     display: flex;
     align-items: center;
 }
 
-.top-box-right .right .icon {
+header .right .icon {
     display: flex;
     align-items: center;
     margin-right: 12px;
 }
-.top-box-right .right .icon p {
+header .right .icon p {
     margin: 0 8px;
 }
 .account {
@@ -87,4 +84,63 @@ hr {
 }
 .account>p {
     margin-right: 12px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+}
+
+table,th,td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 32px 0;
+    text-align: center;
+}
+
+table thead th {
+    padding: 8px 0;
+}
+
+table tbody td {
+    padding: 16px;
+}
+
+input[type="button"], input[type="reset"]{
+    color: #fff;
+    background-color: #313C4E;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="button"]:hover {
+    background-color: #F4694C;
+}
+
+input[type="reset"]:hover {
+    background-color: #F4694C;
+}
+
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-control {
+    margin: 16px 0;
+}
+
+form label {
+    font-weight: 600;
+}
+
+form input[type="text"], input[type="file"] {
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
 }

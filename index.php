@@ -4,6 +4,15 @@
     if(isset($_GET['ctr']) && ($_GET['ctr'] != '')){
         $ctr= $_GET['ctr'];
         switch($ctr){
+            case 'register':
+                include 'view/account/register.php';
+                break;
+            case 'login':
+                include 'view/account/login.php';
+                break;
+            case 'forget':
+                include 'view/account/forget.php';
+                break;
             case 'roomtype':
                 include 'view/roomtype.php';
                 break;
@@ -25,7 +34,5 @@
     }
 
     include "view/footer.php";
-
-
 
 ?>

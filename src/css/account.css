@@ -1,0 +1,114 @@
+
+.account a {
+    text-decoration: none;
+    color: #F4694C;
+}
+
+.account a:hover {
+    color: rgb(40, 117, 40);
+}
+
+.form-register , .form-login, .form-forget{
+    width: 350px;
+    margin: 32px auto 16px;
+}
+
+.form-register input {
+    width: 100%;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 8px;
+    padding: 16px 8px;
+    margin: 16px 0;
+}
+
+
+.form-login input {
+    width: 100%;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 8px;
+    padding: 16px 8px;
+    margin: 16px 0;
+}
+
+
+
+.form-forget input {
+    width: 100%;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 8px;
+    padding: 16px 8px;
+    margin: 16px 0;
+}
+hr{
+    height: 3px;
+    background-color: #F4694C;
+    border: 1px solid #F4694C;
+}
+
+.login{
+    margin: 16px 0;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #F4694C;
+    border: #F4694C;
+    border-radius: 0.5rem;  
+    color: #fff;
+    font-size: 19px;
+}
+
+.login:hover {
+    background-color: rgb(40, 117, 40);
+}
+.register{
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 19px;
+}
+
+.register a {
+    text-decoration: none;
+    color: rgb(40, 117, 40);
+}
+
+.register a:hover {
+    color: #F4694C;
+}
+
+.forget{
+    text-align: center;
+}
+
+.forget a {
+    text-decoration: none;
+    color: #F4694C;
+}
+
+.forget a:hover {
+    color: rgb(40, 117, 40);
+}
+
+.logout i {
+    color: black;
+    margin-left: 8px;
+}
+
+.logout i:hover {
+    color: rgb(40, 117, 40);
+}
+
+.send {
+    margin: 16px 0;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #F4694C;
+    border: #F4694C;
+    border-radius: 0.5rem;  
+    color: #fff;
+    font-size: 19px;
+}
+.send:hover {
+    background-color: rgb(40, 117, 40);
+}

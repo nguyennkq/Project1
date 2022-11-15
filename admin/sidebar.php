@@ -1,86 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="../src/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div class="box-left">
             <div class="top-box-left">
-                <img src="./img/logo.png" alt="">
-                <p><a href="">Dashboard</a></p>
+                <img src="../img/logo.png" alt="">
+                <p><a href="index.php">Dashboard</a></p>
             </div>
             <nav>
                 <ul>
                     <li>
                         <i class="fa-solid fa-gauge"></i>
-                        <a href="">Thống kê</a>
+                        <a href="index.php?ctr=list-stastis">Thống kê</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-image"></i>
-                        <a href="">Thư viện ảnh</a>
+                        <a href="index.php?ctr=list-gallery">Thư viện ảnh</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-bed"></i>
-                        <a href="">Phòng</a>
+                        <a href="index.php?ctr=list-roomtype">Loại Phòng</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-house"></i>
-                        <a href="">Loại phòng</a>
+                        <a href="index.php?ctr=list-room">Phòng</a>
                     </li>
                     <li>
                         <i class="fas fa-hand-point-up"></i>
-                        <a href="">Đặt phòng</a>
+                        <a href="index.php?ctr=list-booking">Đặt phòng</a>
                     </li>
                     <li>
                         <i class="fas fa-gift"></i>
-                        <a href="">Ưu đãi</a>
+                        <a href="index.php?ctr=list-coupon">Ưu đãi</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-comment"></i>
-                        <a href="">Phản hồi</a>
-                    </li>
-                </ul>
-            </nav>
-            <hr>
-            <nav>
-                <ul>
-                    
-                    <li>
-                        <i class="fa-solid fa-sliders"></i>
-                        <a href="">Slider</a>
+                        <a href="index.php?ctr=list-feedback">Phản hồi</a>
                     </li>
                 </ul>
             </nav>
         </div>
-        <div class="box-right">
-            <div class="top-box-right">
-                <h3>Thống kê</h3>
-                <div class="right">
-                    <div class="icon">
-                        <p><i class="fa-solid fa-magnifying-glass"></i></p>
-                        <p><i class="fa-solid fa-bell"></i></p>
-                    </div>
-                    |
-                    <div class="account">
-                        <p>Admin</p>
-                        <img src="./img/_header.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-
-
-
-    </div>
-</body>
-</html>
