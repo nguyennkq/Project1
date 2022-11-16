@@ -160,6 +160,59 @@ html {
     color: aqua;
 }
 
+.content1 .most-rooms {
+    margin: 32px 64px;
+}
+
+.content1 .most-rooms h1 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+}
+
+.content1 .most-rooms .box-rooms {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content1 .most-rooms .item-rooms {
+    width: 400px;
+    border: 0.5px solid rgb(242, 235, 235);
+}
+
+.content1 .most-rooms .item-rooms .main-desc{
+    margin: 16px 0;
+}
+
+.content1 .most-rooms .item-rooms .desc {
+    padding: 16px;
+}
+
+.content1 .most-rooms .item-rooms img {
+    width: 100%;
+}
+
+.content1 .most-rooms .item-rooms img:hover {
+    filter: brightness(70%);
+    transition: 0.5s;
+}
+
+.item-rooms .top-desc, .buttom-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+}
+.item-rooms .buttom-desc a {
+    text-decoration: none;
+    color: #F4694C;
+}
+
+.item-rooms .buttom-desc a:hover {
+    color: rgb(40, 117, 40);
+}
 .about-service{
     padding: 0 64px;
     display: flex;

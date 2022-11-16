@@ -30,7 +30,6 @@
 
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-
     <div class="swiper-scrollbar"></div>
 </div>
 
@@ -45,7 +44,7 @@
             <input type="text" id="myID" placeholder="Checkout">
         </div>
         <div class="adults">
-            <label for="">Adults</label>
+            <label for="">Người lớn</label>
             <select name="">
                 <option value="">1</option>
                 <option value="">2</option>
@@ -53,7 +52,7 @@
             </select>
         </div>
         <div class="children">
-            <label for="">Children</label>
+            <label for="">Trẻ em</label>
             <select name="">
                 <option value="">0</option>
                 <option value="">1</option>
@@ -63,6 +62,68 @@
         </div>
         <button>Check</button>
     </form>
+    <div class="most-rooms">
+        <h1>Phòng được quan tâm nhiều</h1>
+        <div class="box-rooms">
+            <div class="item-rooms">
+                <a href="">
+                    <img src="./img/phongdoi1giuong.jpg" alt="">
+                </a>
+                <div class="desc">
+                    <div class="top-desc">
+                        <h3>Phòng Đơn</h3>
+                        <p>200.000VNĐ/Đêm</p>
+                    </div>
+                    <p style="color: #F4694C;">50m2</p>
+                    <p class="main-desc">
+                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
+                    </p>
+                    <div class="buttom-desc">
+                        <p>3 Người lớn | 2 Trẻ em</p>
+                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item-rooms">
+                <a href="">
+                    <img src="./img/phongdoi1giuong.jpg" alt="">
+                </a>
+                <div class="desc">
+                    <div class="top-desc">
+                        <h3>Phòng Đơn</h3>
+                        <p>200.000VNĐ/Đêm</p>
+                    </div>
+                    <p style="color: #F4694C;">50m2</p>
+                    <p class="main-desc">
+                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
+                    </p>
+                    <div class="buttom-desc">
+                        <p>3 Người lớn | 2 Trẻ em</p>
+                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item-rooms">
+                <a href="">
+                    <img src="./img/phongdoi1giuong.jpg" alt="">
+                </a>
+                <div class="desc">
+                    <div class="top-desc">
+                        <h3>Phòng Đơn</h3>
+                        <p>200.000VNĐ/Đêm</p>
+                    </div>
+                    <p style="color: #F4694C;">50m2</p>
+                    <p class="main-desc">
+                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
+                    </p>
+                    <div class="buttom-desc">
+                        <p>3 Người lớn | 2 Trẻ em</p>
+                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="block">
         <h1>Dịch vụ của chúng tôi</h1>
         <div class="about-service">
