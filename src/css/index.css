@@ -270,37 +270,30 @@ main {
 }
 
 .box-image {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 32px;
+
 }
 
 .box-image img {
     width: 100%;
-    display: block;
+    height: 500px;
 }
-
-.box-image .img2 {
-    margin-top: 32px;
-}
-
-.detail {
+.room-detail {
     display: flex;
     justify-content: space-between;
     margin-top: 32px;
 }
 
-.detail .facilities {
+.room-detail .facilities {
     margin-top: 32px;
 }
 
-.detail .box-facilities {
+.room-detail .box-facilities {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 16px;
 }
 
-.detail .box-facilities p {
+.room-detail .box-facilities p {
     margin: 16px;
 }
 .description>p {

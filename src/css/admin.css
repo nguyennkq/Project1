@@ -7,6 +7,13 @@ html {
     font-family: 'Mulish', sans-serif;
 }
 
+#message {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    margin: 16px 0;
+}
+
 .container {
     display: flex;
 }
@@ -110,12 +117,16 @@ table tbody td {
     padding: 16px;
 }
 
-input[type="button"], input[type="reset"]{
+input[type="button"], input[type="reset"], input[type="submit"]{
     color: #fff;
     background-color: #313C4E;
     padding: 8px 16px;
     cursor: pointer;
     border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #F4694C;
 }
 
 input[type="button"]:hover {
