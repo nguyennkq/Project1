@@ -14,6 +14,7 @@ if (is_file($anhpath)) {
 <h1>Cập nhật phòng</h1>
 <form action="index.php?ctr=update-room" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_phong" value="<?= $id_phong ?>">
+    <label for="">Loại phòng</label>
     <select name="id_loai">
         <?php foreach ($list_roomtype as $roomtype) {
             if ($roomtype['id_loai'] == $id_loai) {
@@ -48,7 +49,7 @@ if (is_file($anhpath)) {
         <input type="text" name="dien_tich" value="<?= $dien_tich ?>">
     </div>
     <div class="form-control">
-        <label for="">Trạng thái</label>
+        <label for="">Trạng thái</label><br>
         <input type="radio" name="trang_thai" value="0" <?= $trang_thai==0 ? 'checked' : "" ?>>Đã đặt
         <input type="radio" name="trang_thai" value="1" <?= $trang_thai==1 ? 'checked' : "" ?>>Còn trống
     </div>

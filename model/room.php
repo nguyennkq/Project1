@@ -1,6 +1,6 @@
 <?php
 
-require_once 'pdo.php';
+// require_once 'pdo.php';
     function room_selectall(){
         $sql="SELECT * FROM phong";
         return pdo_query($sql);

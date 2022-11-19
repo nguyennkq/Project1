@@ -29,7 +29,7 @@
                 <td><?= $id_phong ?></td>
                 <td><?= $ten_phong ?></td>
                 <td><?= $gia_phong ?></td>
-                <td><?= $mo_ta ?></td>
+                <td class="desc"><?= $mo_ta ?></td>
                 <td><?= $anh_phong ?></td>
                 <td><?= $nguoi_lon_max ?></td>
                 <td><?= $tre_em_max ?></td>

@@ -29,6 +29,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             // }
             $list_room = room_selectallbyid($id_loai);
             $ten_loai= name_roomtype($id_loai);
+            // $anh_loai= name_roomtype($id_loai);
             include "view/room.php";
         case 'blog':
             include 'view/blog.php';
