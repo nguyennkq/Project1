@@ -14,7 +14,7 @@
             $delete = "index.php?ctr=getdelete-roomtype&id_loai=" . $id_loai;
             $anhpath = "../upload/" . $anh_loai;
             if (is_file($anhpath)) {
-                $anh_loai = "<img src='" . $anhpath . "' width='200px' height='200px'>";
+                $anh_loai = "<img src='" . $anhpath . "' width='100px' height='100px'>";
             } else {
                 $anh_loai = "";
             }
@@ -29,7 +29,6 @@
                     </td>            
                 </tr>';
         }
-
 
         ?>
     </tbody>

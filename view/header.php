@@ -20,11 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
 </head>
-
 <body>
-<nav>
-  
-</nav>
     <div class="box-container">
         <header>
             <div class="nav">
@@ -34,7 +30,7 @@
                 <div class="menu">
                     <ul id="nav">
                         <li ><a href="index.php">Trang chủ</a></li>
-                        <li ><a href="index.php?ctr=roomtype">Phòng</a></li>
+                        <li ><a href="index.php?ctr=roomtype">Loại phòng</a></li>
                         <li ><a href="index.php?ctr=blog">Blog</a></li>
                         <li ><a href="index.php?ctr=discount">Ưu đãi</a></li>
                         <li ><a href="index.php?ctr=gallery">Thư viện</a></li>

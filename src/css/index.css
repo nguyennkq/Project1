@@ -2,11 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
-html {
+html{
     font-family: 'Mulish', sans-serif;
+    height: 100%;
+
 }
+
+body {
+    min-height: 100%;
+}
+
+/* .box-container {
+    min-height: 100%;
+    position: relative;
+} */
 
 .swiper {
     max-width: 100%;
@@ -264,7 +276,6 @@ html {
 }
 
 
-
 main {
     padding: 0 64px;
 }
@@ -406,6 +417,8 @@ footer {
     background-color: #F4694C;
     margin-top: 24px;
     padding-bottom: 24px;
+    position: sticky;
+    top: 100%;
 }
 
 .box-footer {

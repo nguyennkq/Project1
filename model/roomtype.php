@@ -24,6 +24,18 @@
         pdo_execute($sql,$id_loai);
     }
 
+    
+    function name_roomtype($id_loai){
+        if($id_loai>0){
+            $sql="select * from loai_phong where id_loai=".$id_loai;
+            extract(pdo_query_one($sql));
+            return $ten_loai;
+        }else {
+            return "";
+        }
+    }
+
+
     function roomtype_getone($id_loai){
         $sql="SELECT * FROM loai_phong WHERE id_loai=?";
         return pdo_query_one($sql,$id_loai);

@@ -26,10 +26,7 @@
                         <i class="fa-solid fa-gauge"></i>
                         <a href="index.php?ctr=list-stastis">Thống kê</a>
                     </li>
-                    <li>
-                        <i class="fa-solid fa-image"></i>
-                        <a href="index.php?ctr=list-gallery">Thư viện ảnh</a>
-                    </li>
+
                     <li>
                         <i class="fa-solid fa-bed"></i>
                         <a href="index.php?ctr=list-roomtype">Loại Phòng</a>
@@ -37,6 +34,14 @@
                     <li>
                         <i class="fa-solid fa-house"></i>
                         <a href="index.php?ctr=list-room">Phòng</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-image"></i>
+                        <a href="index.php?ctr=list-gallery">Thư viện ảnh</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-wrench"></i>
+                        <a href="index.php?ctr=list-service">Dịch vụ</a>
                     </li>
                     <li>
                         <i class="fas fa-hand-point-up"></i>
