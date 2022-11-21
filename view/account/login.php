@@ -1,6 +1,6 @@
 <hr>
 <form class="form-login">
-    <input type="email" placeholder="Email" name="">
+    <input type="email" placeholder="Email" name="email">
     <input type="text" placeholder="Password" name="">
     <button type="submit" class="login">Đăng nhập</button>
 </form>
