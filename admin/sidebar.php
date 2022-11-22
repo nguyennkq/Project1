@@ -48,6 +48,14 @@
                         <a href="index.php?ctr=list-booking">Đặt phòng</a>
                     </li>
                     <li>
+                        <i class="fa-solid fa-user"></i>
+                        <a href="index.php?ctr=list-user">Người dùng</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="index.php?ctr=list-contact">Liên hệ</a>
+                    </li>
+                    <li>
                         <i class="fas fa-gift"></i>
                         <a href="index.php?ctr=list-coupon">Ưu đãi</a>
                     </li>

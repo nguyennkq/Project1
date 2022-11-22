@@ -9,7 +9,7 @@
             |
             <div class="account">
                 <p>Admin</p>
-                <img src="../img/_header.png" alt="">
+                <img src="../img/avatar.jpg" alt="" width="40px" height="40px">
             </div>
         </div>
     </header>

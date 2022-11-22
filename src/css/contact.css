@@ -55,6 +55,15 @@ article h1 {
   background-color: #f4694c;
   color: #f5f6f8;
 }
+
+.contact-page form input[type="submit"] {
+  width: 50%;
+  height: 50px;
+  border: 1px solid #f4694c;
+  border-radius: 7px;
+  background-color: #f4694c;
+  color: #f5f6f8;
+}
 .contact-our {
   display: flex;
   column-gap: 85px;

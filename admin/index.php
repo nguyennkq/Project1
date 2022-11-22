@@ -5,6 +5,9 @@ include "../model/pdo.php";
 include "../model/roomtype.php";
 include "../model/room.php";
 include "../model/gallery.php";
+include "../model/user.php";
+include "../model/service.php";
+include "../model/contact.php";
 
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -153,7 +156,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_room = room_selectall();
             include "gallery/update.php";
             break;
-        case "update-gallery";
+        case "update-gallery":
             if (isset($_POST['update'])) {
                 $id_thu_vien = $_POST["id_thu_vien"];
                 $id_phong = $_POST['id_phong'];
@@ -166,6 +169,120 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_room = room_selectall();
             $list_gallery = gallery_selectall();
             include "gallery/list.php";
+            break;
+        case "list-user":
+            $list_user = user_selectall();
+            include "user/list.php";
+            break;
+        case "add-user":
+            if (isset($_POST['ten'])) {
+                $ten = $_POST['ten'];
+                $ho_ten = $_POST['ho_ten'];
+                $dia_chi = $_POST['dia_chi'];
+                $mat_khau = $_POST['mat_khau'];
+                $cmnd = $_POST['cmnd'];
+                $email = $_POST['email'];
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $vai_tro = $_POST['vai_tro'];
+                if (!empty($so_dien_thoai)) {
+                    user_insert($ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
+                    $message = "Thêm thành công";
+                } else {
+                    $message = "Không thêm được";
+                }
+            }
+            include "user/add.php";
+            break;
+        case "getupdate-user":
+            if (isset($_GET['id_nguoi']) && $_GET['id_nguoi'] > 0) {
+                $user_one = user_getone($_GET['id_nguoi']);
+            }
+            include "user/update.php";
+            break;
+        case "getdelete-user":
+            if (isset($_GET['id_nguoi']) && $_GET['id_nguoi'] > 0) {
+                user_delete($_GET['id_nguoi']);
+            }
+            $list_user = user_selectall();
+            include "user/list.php";
+            break;
+        case "update-user":
+            if (isset($_POST['update'])) {
+                $id_nguoi = $_POST['id_nguoi'];
+                $ten = $_POST['ten'];
+                $ho_ten = $_POST['ho_ten'];
+                $dia_chi = $_POST['dia_chi'];
+                $mat_khau = $_POST['mat_khau'];
+                $cmnd = $_POST['cmnd'];
+                $email = $_POST['email'];
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $vai_tro = $_POST['vai_tro'];
+                user_update($id_nguoi, $ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
+            }
+            $list_user = user_selectall();
+            include "user/list.php";
+            break;
+        case 'list-service':
+            $list_room = room_selectall();
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'add-service':
+            if (isset($_POST['id_phong'])) {
+                $ten_dich_vu = $_POST['ten_dich_vu'];
+                $id_phong = $_POST['id_phong'];
+                $hinh_anh = $_FILES['hinh_anh']["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                    service_insert($ten_dich_vu, $id_phong, $hinh_anh);
+                    $message = "Thêm thành công";
+                } else {
+                    $message = "Không thêm được";
+                }
+            }
+            $list_room = room_selectall();
+            include "service/add.php";
+            break;
+        case 'getupdate-service':
+            if (isset($_GET['id_dich_vu']) && $_GET['id_dich_vu'] > 0) {
+                $service_one = service_getone($_GET['id_dich_vu']);
+            }
+            $list_room = room_selectall();
+            include "service/update.php";
+            break;
+        case "update-service";
+            if (isset($_POST['update'])) {
+                $id_dich_vu = $_POST["id_dich_vu"];
+                $ten_dich_vu = $_POST["ten_dich_vu"];
+                $id_phong = $_POST['id_phong'];
+                $hinh_anh = $_FILES['hinh_anh']["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file);
+                service_update($id_dich_vu, $ten_dich_vu, $id_phong, $hinh_anh);
+            }
+            $list_room = room_selectall();
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'getdelete-service':
+            if (isset($_GET['id_dich_vu']) && $_GET['id_dich_vu'] > 0) {
+                service_delete($_GET['id_dich_vu']);
+            }
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'list-contact':
+            $list_contact = contact_selectall();
+            include "contact/list.php";
+            break;
+        case 'getdelete-contact':
+            if (isset($_GET['id_lien_he']) && $_GET['id_lien_he'] > 0) {
+                contact_delete($_GET['id_lien_he']);
+            }
+            $list_contact = contact_selectall();
+            include "contact/list.php";
             break;
         default:
             include "home.php";

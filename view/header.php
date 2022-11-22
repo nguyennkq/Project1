@@ -31,7 +31,6 @@
                     <ul id="nav">
                         <li ><a href="index.php">Trang chủ</a></li>
                         <li ><a href="index.php?ctr=roomtype">Loại phòng</a></li>
-                        <li ><a href="index.php?ctr=blog">Blog</a></li>
                         <li ><a href="index.php?ctr=discount">Ưu đãi</a></li>
                         <li ><a href="index.php?ctr=gallery">Thư viện</a></li>
                         <li ><a href="index.php?ctr=service">Dịch vụ</a></li>

@@ -8,17 +8,24 @@
 html{
     font-family: 'Mulish', sans-serif;
     height: 100%;
-
 }
 
 body {
-    min-height: 100%;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-/* .box-container {
+.box-container{
     min-height: 100%;
     position: relative;
-} */
+}
+
+
+header{
+    
+}
 
 .swiper {
     max-width: 100%;
@@ -280,9 +287,6 @@ main {
     padding: 0 64px;
 }
 
-.box-image {
-
-}
 
 .box-image img {
     width: 100%;
@@ -415,10 +419,11 @@ main {
 
 footer {
     background-color: #F4694C;
-    margin-top: 24px;
+    margin-top: 40px;
     padding-bottom: 24px;
     position: sticky;
     top: 100%;
+    width: 100%;
 }
 
 .box-footer {

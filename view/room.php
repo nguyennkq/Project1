@@ -8,7 +8,7 @@
         foreach ($list_room as $room) {
             extract($room);
             $img_phong = $img_path . $anh_phong;
-            $link_phong = "index.php?ctr=room-detail&id_phong=" . $id_phong;
+            $link_phong = "index.php?ctr=roomdetail&id_phong=" . $id_phong;
             // echo
             // '
         ?>
@@ -27,7 +27,7 @@
                     </p>
                     <div class="buttom-desc">
                         <p><?= $nguoi_lon_max ?> Người lớn | <?= $tre_em_max ?> Trẻ em</p>
-                        <a href="index.php?ctr=room-detail&id_phong=<?= $id_phong ?>">View room <i class="fa-solid fa-caret-right"></i></a>
+                        <a href="index.php?ctr=roomdetail&id_phong=<?= $id_phong ?>">View room <i class="fa-solid fa-caret-right"></i></a>
                     </div>
                     <button><?= $trang_thai==1 ? 'Còn trống' : 'Đã đặt' ?></button>
                 </div>
