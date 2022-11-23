@@ -8,11 +8,11 @@
         <input type="text" name="id_thu_vien" placeholder="Id thư viện" disabled>
     </div>
     <div class="form-control">
-        <label for="">Loại phòng</label>
-        <select name="id_loai" id="">
-            <?php foreach ($list_roomtype as $roomtype) {
-                extract($roomtype);
-                echo '<option value="' . $id_loai . '">' . $ten_loai . '</option>';
+        <label for="">Phòng</label>
+        <select name="id_phong" id="">
+            <?php foreach ($list_room as $room) {
+                extract($room);
+                echo '<option value="' . $id_phong . '">' . $ten_phong . '</option>';
             } ?>
         </select>
     </div>
@@ -20,7 +20,7 @@
         <label for="">Ảnh thư viện</label>
         <input type="file" name="anh_thu_vien">
     </div>
-    <input type="submit" value="Thêm mới">
+    <input type="submit" value="Thêm mới" name="add">
     <input type="reset" value="Nhập lại">
-    <a href="index.php?ctr=list-gallery"><input type="button" value="Danh sách loại phòng"></a>
+    <a href="index.php?ctr=list-gallery"><input type="button" value="Danh sách thư viện"></a>
 </form>

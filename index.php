@@ -4,6 +4,9 @@ include "global.php";
 include "model/pdo.php";
 include "model/room.php";
 include "model/roomtype.php";
+include "model/contact.php";
+include "model/service.php";
+include "model/gallery.php";
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
@@ -29,15 +32,28 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             // }
             $list_room = room_selectallbyid($id_loai);
             $ten_loai= name_roomtype($id_loai);
+            // $anh_loai= name_roomtype($id_loai);
             include "view/room.php";
         case 'blog':
             include 'view/blog.php';
             break;
         case 'contact':
-            include 'view/contact.php';
+            if (isset($_POST['contact'])&&($_POST['contact'])) {
+                $email = $_POST['email'];
+                $dien_thoai = $_POST['dien_thoai'];
+                $dia_chi = $_POST['dia_chi'];
+                $noi_dung = $_POST['noi_dung'];
+                contact_insert($email,$dien_thoai,$dia_chi,$noi_dung);
+            }
+            include "view/contact.php";
             break;
         case 'service':
+            $list_service = service_selectall();
             include 'view/service.php';
+            break;
+        case 'gallery':
+            $list_gallery = gallery_selectall();
+            include 'view/gallery.php';
             break;
         default:
             include 'view/home.php';

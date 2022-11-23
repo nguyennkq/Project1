@@ -1,14 +1,14 @@
 
-.banner-service {
+.banner-gallery {
   margin: 0 auto;
   position: relative;
 }
-.banner-service img {
+.banner-gallery img {
   width: 100%;
   filter: brightness(70%);
   height: 600px;
 }
-.banner-service p {
+.banner-gallery p {
   color: white;
   text-align: center;
   position: absolute;
@@ -17,18 +17,20 @@
   transform: translate(-50%, -50%);
   font-size: 80px;
 }
-.box-service-page {
-  display: flex;
+.box-gallery-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   justify-content: space-between;
   margin: 84px 64px;
 }
-.service-item {
-  width: 100%;
+.gallery-item {
+  width: 660px;
   height: 380px;
+  margin-top: 30px;
 }
-.service-item img {
-  width: 100%;
+.gallery-item img {
+  width: 660px;
   height: 100%;
 }
 .service-item h1 {

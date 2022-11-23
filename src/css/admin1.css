@@ -155,3 +155,17 @@ form input[type="text"], input[type="file"] {
     margin: 8px 0;
     padding: 8px;
 }
+
+select, textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+form input[type="radio"]{
+    margin: 8px 0;
+}
+
+tr .desc {
+    max-width: 200px;
+}

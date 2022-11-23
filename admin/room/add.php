@@ -41,12 +41,12 @@ if (isset($message) && ($message != "")) echo '<h3 id="message">' . $message . '
         <input type="text" name="dien_tich" placeholder="Diện tích">
     </div>
     <div class="form-control">
-        <label for="">Trạng thái</label>
+        <label for="">Trạng thái</label><br>
         <input type="radio" name="trang_thai" value="0">Đã đặt
         <input type="radio" name="trang_thai" value="1" checked>Còn trống
     </div>
     <div class="form-control">
-        <label for="">Mô tả</label>
+        <label for="">Mô tả</label><br>
         <textarea name="mo_ta" id="" cols="30" rows="10"></textarea>
     </div>
     <input type="submit" value="Thêm mới">
