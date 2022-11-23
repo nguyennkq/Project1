@@ -5,6 +5,8 @@ include "../model/pdo.php";
 include "../model/roomtype.php";
 include "../model/room.php";
 include "../model/gallery.php";
+include "../model/contact.php";
+include "../model/service.php";
 
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -166,6 +168,68 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_room = room_selectall();
             $list_gallery = gallery_selectall();
             include "gallery/list.php";
+            break;
+        case 'list-service':
+            $list_room = room_selectall();
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'add-service':
+            if (isset($_POST['id_phong'])) {
+                $ten_dich_vu = $_POST['ten_dich_vu'];
+                $id_phong = $_POST['id_phong'];
+                $hinh_anh = $_FILES['hinh_anh']["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                    service_insert($ten_dich_vu, $id_phong, $hinh_anh);
+                    $message = "Thêm thành công";
+                } else {
+                    $message = "Không thêm được";
+                }
+            }
+            $list_room = room_selectall();
+            include "service/add.php";
+            break;
+        case 'getupdate-service':
+            if (isset($_GET['id_dich_vu']) && $_GET['id_dich_vu'] > 0) {
+                $service_one = service_getone($_GET['id_dich_vu']);
+            }
+            $list_room = room_selectall();
+            include "service/update.php";
+            break;
+        case "update-service";
+            if (isset($_POST['update'])) {
+                $id_dich_vu = $_POST["id_dich_vu"];
+                $ten_dich_vu = $_POST["ten_dich_vu"];
+                $id_phong = $_POST['id_phong'];
+                $hinh_anh = $_FILES['hinh_anh']["name"];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file);
+                service_update($id_dich_vu, $ten_dich_vu, $id_phong, $hinh_anh);
+            }
+            $list_room = room_selectall();
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'getdelete-service':
+            if (isset($_GET['id_dich_vu']) && $_GET['id_dich_vu'] > 0) {
+                service_delete($_GET['id_dich_vu']);
+            }
+            $list_service = service_selectall();
+            include "service/list.php";
+            break;
+        case 'list-contact':
+            $list_contact = contact_selectall();
+            include "contact/list.php";
+            break;
+        case 'getdelete-contact':
+            if (isset($_GET['id_lien_he']) && $_GET['id_lien_he'] > 0) {
+                contact_delete($_GET['id_lien_he']);
+            }
+            $list_contact = contact_selectall();
+            include "contact/list.php";
             break;
         default:
             include "home.php";

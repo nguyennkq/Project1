@@ -44,6 +44,10 @@
                         <a href="index.php?ctr=list-service">Dịch vụ</a>
                     </li>
                     <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="index.php?ctr=list-contact">Liên hệ</a>
+                    </li>
+                    <li>
                         <i class="fas fa-hand-point-up"></i>
                         <a href="index.php?ctr=list-booking">Đặt phòng</a>
                     </li>

@@ -4,33 +4,15 @@
     <p>SERVICE</p>
   </div>
   <div class="box-service-page">
-    <section class="service-item">
-      <img src="./img/beboi.jpg" alt="" />
-      <h1>Swimming Pool</h1>
-    </section>
-    <section class="service-item">
-      <img src="./img/phong-tap-gym-o-tphcm-thumb.jpg" alt="" />
-      <h1>Gym</h1>
-    </section>
-  </div>
-  <div class="box-service-page">
-    <section class="service-item">
-      <img src="./img/bar.jpg" alt="" />
-      <h1>Resturants & Bar</h1>
-    </section>
-    <section class="service-item">
-      <img src="./img/spa.jpg" alt="" />
-      <h1>Spa & Jaccuzi</h1>
-    </section>
-  </div>
-  <div class="box-service-page">
-    <section class="service-item">
-      <img src="./img/Conference Room.jpg" alt="" />
-      <h1>Conference Room</h1>
-    </section>
-    <section class="service-item">
-      <img src="./img/Packing Garage.jpg" alt="" />
-      <h1>Packing Garage</h1>
-    </section>
+    <?php foreach ($list_service as $service){
+      extract($service);
+      $list_service = "index.php?ctr=service&id_dich_vu=" . $id_dich_vu;
+      $img= $img_path . $hinh_anh;
+      echo'<section class="service-item">
+      <img src="'.$img.'" alt="" />
+      <h1>'.$ten_dich_vu.'</h1></section>';   
+    }  
+    ?>
   </div>
 </div>
+

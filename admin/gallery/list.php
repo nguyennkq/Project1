@@ -29,7 +29,6 @@
         <?php
         }
         ?>
-
     </tbody>
 </table>
 <a href="index.php?ctr=add-gallery"><input type="button" value="Thêm mới"></a>
