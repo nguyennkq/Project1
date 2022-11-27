@@ -8,6 +8,11 @@ include "../model/gallery.php";
 include "../model/user.php";
 include "../model/service.php";
 include "../model/contact.php";
+include "../model/booking.php";
+include "../model/stastis.php";
+include "../model/feedback.php";
+
+
 
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -273,6 +278,15 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_service = service_selectall();
             include "service/list.php";
             break;
+        case 'list-booking':
+            $list_booking = dat_phong();
+            include "booking/list.php";
+            break;
+        case 'detail-booking':
+            $id_dat = $_GET['id_dat'];
+            $detail_booking = bookingdetail_selectall($id_dat);
+            include "booking/detail.php";
+            break;
         case 'list-contact':
             $list_contact = contact_selectall();
             include "contact/list.php";
@@ -283,6 +297,32 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             }
             $list_contact = contact_selectall();
             include "contact/list.php";
+            break;
+        case 'list-stastis':
+            $list_stastis = stastis_selectall();
+            $listtk = thongke_selectall_nguoi();
+            $listtkdatphong = thongke_selectall_datphong();
+            include "stastis/list.php";
+            break;
+        case 'diagram':
+            $list_stastis = stastis_selectall();
+            include "stastis/diagram.php";
+            break;
+        case 'list-feedback':
+            $list_thong_ke_feedback = thong_ke_feedback();
+            include "feedback/list.php";
+            break;
+        case 'detail-feedback':
+            $id_phong = $_GET['id_phong'];
+            $items = feedback_select_by_phong($id_phong);
+            include "feedback/detail.php";
+            break;
+        case 'getdelete-feedback':
+            $id_phan_hoi = $_GET['id_phan_hoi'];
+            $id_phong = $_GET['id_phong'];
+            feedback_delete($id_phan_hoi);
+            $items = feedback_select_by_phong($id_phong);
+            include 'feedback/detail.php';
             break;
         default:
             include "home.php";

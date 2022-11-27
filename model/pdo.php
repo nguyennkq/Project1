@@ -13,8 +13,7 @@ function pdo_get_connection(){
      // sử dụng phương thức setAttribute để xử lí lỗi của Exception
 
     // PDO::FETCH_ASSOC: trả về dữ liệu dạng mảng với key là tên cột của bảng trong CSDL.
-
-    return $conn;
+   return $conn;
 }
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
@@ -33,7 +32,7 @@ function pdo_execute($sql){
         // tạo prepared statement(prepare là một câu lệnh được chuẩn bị)
         $stmt->execute($sql_args);
         // Gán giá trị và thực thi
-
+       
     }
     catch(PDOException $e){
         throw $e;
@@ -43,6 +42,13 @@ function pdo_execute($sql){
          // Loại bỏ một hoặc một nhiều biến được truyền vào
     }
 }
+function exc($sql){
+    $conn = pdo_get_connection();
+    $conn->exec($sql);
+    $last_id = $conn->lastInsertId();
+    return $last_id;
+}
+
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql

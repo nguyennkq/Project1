@@ -117,6 +117,10 @@ table tbody td {
     padding: 16px;
 }
 
+
+table tbody td:last-child{
+    width: 200px;
+}
 input[type="button"], input[type="reset"], input[type="submit"]{
     color: #fff;
     background-color: #313C4E;

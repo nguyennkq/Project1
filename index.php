@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "view/header.php";
 include "global.php";
 include "model/pdo.php";
@@ -8,7 +9,9 @@ include "model/contact.php";
 include "model/user.php";
 include "model/gallery.php";
 include "model/service.php";
-
+include "model/feedback.php";
+include "model/booking.php";
+if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
     switch ($ctr) {
@@ -97,6 +100,63 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 include "view/roomdetail.php";
             }
             break;
+            break;
+        case 'addcart':
+            // get addcart từ home.php
+            if (isset($_POST['id_phong'])) {
+                $id_phong = $_POST['id_phong'];
+                $ten_phong = $_POST['ten_phong'];
+                $anh_phong = $_POST['anh_phong'];
+                $gia_phong = $_POST['gia_phong'];
+                $so_luong = 1;
+                $ngay_vao = $_POST['ngay_vao'];
+                $ngay_tra = $_POST['ngay_tra'];
+                $nguoi_lon = $_POST['nguoi_lon'];
+                $tre_em = $_POST['tre_em'];
+                $thanh_tien = $so_luong * $gia_phong;
+                $spadd = [$id_phong, $ten_phong, $anh_phong, $gia_phong, $so_luong, $thanh_tien, $ngay_vao, $ngay_tra, $nguoi_lon, $tre_em];
+                array_push($_SESSION['cart'], $spadd);
+            }
+            include 'view/bookingdetail.php';
+            break;
+        case 'delcart':
+            // Xóa sản phẩm trong giỏ hàng
+            if (isset($_GET['idcart'])) {
+                array_splice($_SESSION['cart'], $_GET['idcart'], 1);
+            } else {
+                $_SESSION['cart'] = [];
+            }
+            header('Location: index.php?ctr=viewcart');
+            break;
+        case 'viewcart':
+            include 'view/bookingdetail.php';
+            break;
+        case 'dat_hang':
+            $nguoi_dung=user_selectall();
+            include 'view/booking.php';
+            break;
+        case 'thanhtoan':
+            if(isset($_POST['thanhtoan'])&& ($_POST['thanhtoan'])){
+                $ngay_dat = date('Y/m/d');
+                $tong_tien=$_POST['tong_tien'];
+                $thanh_toan=$_POST['thanh_toan'];
+                $ho_ten=$_POST['ho_ten'];
+                $email=$_POST['email'];
+                $dien_thoai=$_POST['dien_thoai'];
+                $id_nguoi=$_POST['id_nguoi'];
+
+                $id_dat=booking_insert($ngay_dat,$tong_tien,$thanh_toan,$ho_ten,$email,$dien_thoai,$id_nguoi);
+                if(isset($_SESSION['cart']) && (count($_SESSION['cart'])>0)){
+                    foreach($_SESSION['cart'] as $cart){
+                        bookingdetail_insert($cart[6],$cart[7],$cart[8],$cart[9],$cart[4],$cart[3],$cart[5],$cart[1],$cart[2],$id_dat,$cart[0]);
+                    }
+                    unset($_SESSION['cart']);
+                }
+            }
+            include 'view/bookinginfo.php';
+            break;
+        case 'thanh_cong';
+            include 'view/bookinginfo.php';
         case 'contact':
             if (isset($_POST['contact']) && ($_POST['contact'])) {
                 $email = $_POST['email'];
@@ -108,7 +168,12 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             include "view/contact.php";
             break;
         case 'service':
+            $list_service = service_selectall();
             include 'view/service.php';
+            break;
+        case 'gallery':
+            $list_gallery = gallery_selectall();
+            include 'view/gallery.php';
             break;
         default:
             include 'view/home.php';

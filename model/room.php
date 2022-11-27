@@ -53,7 +53,7 @@
     }
 
     function room_getone($id_phong){
-        $sql="SELECT * FROM phong WHERE id_phong=?";
+        $sql="SELECT * from phong WHERE id_phong=?";
         return pdo_query_one($sql,$id_phong);
     }
 

@@ -1,7 +1,6 @@
 <?php
 extract($room_one);
 ?>
-
 <main>
     <?php
     extract($room_one);
@@ -60,44 +59,39 @@ extract($room_one);
             </div>
         </div>
         <div class="booking">
-            <form action="" method="post">
+            <form action="index.php?ctr=addcart" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id_phong" value="<?=$id_phong?>">
+                <input type="hidden" name="ten_phong" value="<?=$ten_phong?>">
+                <input type="hidden" name="anh_phong" value = "<?=$img_room?>">
+                <input type="hidden" name="gia_phong" value = "<?=$gia_phong?>">
                 <div class="form-group">
                     Check in
-                    <input type="date">
+                    <input type="date" name="ngay_vao">
                 </div>
                 <div class="form-group">
                     Check out
-                    <input type="date">
-                </div>
-                <div class="form-group">
-                    Phòng
-                    <select name="" id="">
-                        <option value="" selected hidden>No of room</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
+                    <input type="date" name="ngay_tra">
                 </div>
                 <div class="form-group">
                     Người lớn
-                    <select name="" id="">
+                    <select name="nguoi_lon" id="">
                         <option value="" selected hidden>No of Adults</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
                 <div class="form-group">
                     Trẻ em
-                    <select name="" id="">
+                    <select name="tre_em" id="">
                         <option value="" selected hidden>No of Children</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
 
-                <a href="book.html"><input type="button" value="Continue to book"></a>
+                <input type="submit" name="addcart" value="Continue to book">
             </form>
         </div>
     </div>
