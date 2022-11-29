@@ -7,7 +7,7 @@
         <section class="service-item">
         <i class="fa-solid fa-bed"></i>
         <h1>' . $dem . '</h1>
-        <p>TOTAL ROOMS</p>
+        <p>SỐ LƯỢNG PHÒNG</p>
     </section>
 
         ';
@@ -21,7 +21,7 @@
         <section class="service-item">
         <i class="fa-solid fa-bookmark"></i>
         <h1>' . $dem . '</h1>
-        <p>RESERVATIONS</p>
+        <p>LOẠI PHÒNG</p>
     </section>
         ';
     }
@@ -35,7 +35,7 @@
         <section class="service-item">
         <i class="fa-solid fa-users"></i>
         <h1>' . $dem . '</h1>
-        <p>STAFFS</p>
+        <p>NHÂN VIÊN</p>
     </section>
         ';
     }
@@ -48,7 +48,7 @@
         <section class="service-item">
         <i class="fa-solid fa-comments"></i>
         <h1>' . $dem . '</h1>
-        <p>COMPLAINTS</p>
+        <p>PHẢN HỒI</p>
         </section>
         ';
     }
@@ -63,13 +63,13 @@
         <section class="service-item">
         <i class="fa-solid fa-bars"></i>
         <h1>' . $dem . '</h1>
-        <p>BOOKED ROOMS</p>
+        <p>ĐÃ ĐẶT PHÒNG</p>
         </section>
         ';
     }
     ?>
 
-    <section class="service-item">
+    <!-- <section class="service-item">
         <i class="fa-solid fa-circle-check"></i>
         <h1>21</h1>
         <p>AVAILABLE ROOMS</p>
@@ -83,5 +83,5 @@
         <i class="fa-solid fa-spinner"></i>
         <h1>21</h1>
         <p>TOTAL PENDING PAYMENTS</p>
-    </section>
+    </section> -->
 </div>

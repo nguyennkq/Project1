@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./src/css/index.css">
     <link rel="stylesheet" href="./src/css/contact1.css">
     <link rel="stylesheet" href="./src/css/service.css">
-    <link rel="stylesheet" href="./src/css/roomtype1.css">
-    <link rel="stylesheet" href="./src/css/account1.css">
+    <link rel="stylesheet" href="./src/css/roomtype.css">
+    <link rel="stylesheet" href="./src/css/account.css">
     <link rel="stylesheet" href="./src/css/bookingdetail.css">
     <link rel="stylesheet" href="./src/css/aside.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,12 +44,25 @@
                     <?php
                     if (isset($_SESSION['user'])) {
                         extract($_SESSION['user']);
-                    ?>
-                        <div>
-                            Xin chào: <span style="color: #F4694C;"><?= $ho_ten ?></span>
+                        if ($vai_tro == 1) {
+                            echo
+                            '
+                            <div>
+                            Xin chào: <span style="color: #F4694C;">' . $ho_ten . '</span>
                             <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
 
                         </div>
+                            ';
+                        } else {
+                            echo
+                            '
+                            <a href="index.php?ctr=register">Đăng ký</a>
+                            <span>|</span>
+                            <a href="index.php?ctr=login">Đăng nhập</a>
+                            ';
+                        }
+                    ?>
+
 
                     <?php
                     } else {

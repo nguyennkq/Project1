@@ -6,11 +6,11 @@
         <input type="hidden" name="gia_phong" value="<?= $gia_phong ?>">
         <div class="form-group-check">
             Check in
-            <input name="ngay_vao" id="myID">
+            <input type="date" name="ngay_vao">
         </div>
         <div class="form-group-check">
             Check out
-            <input name="ngay_tra" id="myID">
+            <input type="date" name="ngay_tra">
         </div>
         <div class="form-group">
             Người lớn

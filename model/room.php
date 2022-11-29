@@ -26,16 +26,16 @@
     }
     // $nguoi_lon<=nguoi_lon_max AND $tre_em<=tre_em_max
 
-    function room_insert($ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$id_loai){
-        $sql="INSERT INTO phong(ten_phong,gia_phong,mo_ta,anh_phong,nguoi_lon_max,tre_em_max,trang_thai,dien_tich,id_loai) VALUES (?,?,?,?,?,?,?,?,?)";
-        pdo_execute($sql,$ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$id_loai);
+    function room_insert($ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai){
+        $sql="INSERT INTO phong(ten_phong,gia_phong,mo_ta,anh_phong,nguoi_lon_max,tre_em_max,trang_thai,dien_tich,id_loai) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        pdo_execute($sql,$ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai);
     }
 
-    function room_update($id_phong,$ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$id_loai){
+    function room_update($id_phong,$ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai){
         if($anh_phong!=""){
-            $sql="UPDATE phong SET ten_phong='".$ten_phong."', gia_phong='".$gia_phong."',mo_ta='".$mo_ta."', anh_phong='".$anh_phong."',nguoi_lon_max='".$nguoi_lon_max."', tre_em_max='".$tre_em_max."', trang_thai='".$trang_thai."'=1,dien_tich='".$dien_tich."', id_loai='".$id_loai."' WHERE id_phong=".$id_phong;
+            $sql="UPDATE phong SET ten_phong='".$ten_phong."', gia_phong='".$gia_phong."',mo_ta='".$mo_ta."', anh_phong='".$anh_phong."',nguoi_lon_max='".$nguoi_lon_max."', tre_em_max='".$tre_em_max."', trang_thai='".$trang_thai."'=1,dien_tich='".$dien_tich."',luot_xem='".$luot_xem."', id_loai='".$id_loai."' WHERE id_phong=".$id_phong;
         }else {
-            $sql="UPDATE phong SET ten_phong='".$ten_phong."', gia_phong='".$gia_phong."',mo_ta='".$mo_ta."',nguoi_lon_max='".$nguoi_lon_max."', tre_em_max='".$tre_em_max."', trang_thai='".$trang_thai."'=1,dien_tich='".$dien_tich."', id_loai='".$id_loai."' WHERE id_phong=".$id_phong;
+            $sql="UPDATE phong SET ten_phong='".$ten_phong."', gia_phong='".$gia_phong."',mo_ta='".$mo_ta."',nguoi_lon_max='".$nguoi_lon_max."', tre_em_max='".$tre_em_max."', trang_thai='".$trang_thai."'=1,dien_tich='".$dien_tich."',luot_xem='".$luot_xem."', id_loai='".$id_loai."' WHERE id_phong=".$id_phong;
         }
         pdo_execute($sql);
     }
@@ -55,6 +55,16 @@
         return pdo_query_one($sql,$id_phong);
     }
 
+    function room_view($id_phong){
+        $sql = "UPDATE phong set luot_xem = luot_xem + 1 where id_phong = ?";
+        pdo_execute($sql, $id_phong);
+    }
+
+    function room_selectall_top3()
+{
+    $sql = "SELECT * FROM phong where 1 order by luot_xem desc limit 0,3";
+    return pdo_query($sql);
+}
 
 
 ?>

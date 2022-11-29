@@ -10,6 +10,7 @@
         <th>Trẻ em tối đa</th>
         <th>Trạng thái</th>
         <th>Diện tích</th>
+        <th>Lượt xem</th>
         <th>Action</th>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@
                 <td><?= $tre_em_max ?></td>
                 <td><?= $trang_thai==1 ? 'Còn trống' : 'Đã đặt' ?></td>
                 <td><?= $dien_tich ?></td>
+                <td><?= $luot_xem ?></td>
                 <td>
                     <a href="index.php?ctr=getupdate-room&id_phong=<?= $id_phong ?>"><input type="button" value="Sửa"></a>
                     <a href="index.php?ctr=getdelete-room&id_phong=<?= $id_phong ?>"><input type="button" value="Xóa"></a>

@@ -72,6 +72,7 @@ foreach ($nguoi_dung as $nguoi) {
 <form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
     <input type="hidden" name="id_nguoi" value="<?= $id_nguoi ?>">
     <input type="hidden" name="tong_tien" value="<?=$tong?>">
+    <input type="hidden" name="thanh_tien" value="<?=$ttien?>">
     <h1>
         THÔNG TIN ĐẶT PHÒNG
     </h1>

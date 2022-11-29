@@ -4,7 +4,7 @@ $img_room = $img_path . $anh_phong;
 ?>
 <main>
     <?php
-        include "view/aside.php";
+    include "view/aside.php";
     ?>
     <div class="box-right-content">
 
@@ -119,23 +119,21 @@ $img_room = $img_path . $anh_phong;
                 ?>
             </div>
         </div>
-        <div class="comment">
-            <form action="" method="post">
-                <div class="rating">
-                    <h3>Rating</h3>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="item-comment">
-                    <img src="./img/avatar.jpg" alt="" width="50px" height="50px">
-                    <input type="text" placeholder="Nhập phản hồi của bạn ở đây...">
-                </div>
-                <br>
-                <input type="submit" value="Gửi phản hồi">
-            </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            //  jQuery là thư viện được viết từ JavaScript
+            $(document).ready(function() {
+                // là một sự kiện được kích hoạt khi tài liệu html được load và cây DOM được tạo thành 
+                $("#feedback").load("view/form-feedback.php", {
+                    id_phong: <?= $id_phong ?>
+                });
+                // Load form bình luận dựa theo id phòng
+            });
+        </script>
+
+        <h3 style="margin-top: 12px;">Phản hồi</h3>
+        <div class="comment" id="feedback">
+
         </div>
     </div>
 </main>

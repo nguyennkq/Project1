@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "sidebar.php";
 include "header.php";
 include "../model/pdo.php";
@@ -79,10 +80,11 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $tre_em_max = $_POST['tre_em_max'];
                 $trang_thai = $_POST['trang_thai'];
                 $dien_tich = $_POST['dien_tich'];
+                $luot_xem = $_POST['luot_xem'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_phong"]["name"]);
                 if (move_uploaded_file($_FILES["anh_phong"]["tmp_name"], $target_file)) {
-                    room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $id_loai);
+                    room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich,$luot_xem,$id_loai);
                     $message = "Thêm thành công";
                 } else {
                     $message = "Không thêm được";
@@ -117,10 +119,11 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $tre_em_max = $_POST['tre_em_max'];
                 $trang_thai = $_POST['trang_thai'];
                 $dien_tich = $_POST['dien_tich'];
+                $luot_xem = $_POST['luot_xem'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_phong"]["name"]);
                 move_uploaded_file($_FILES["anh_phong"]["tmp_name"], $target_file);
-                room_update($id_phong, $ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $id_loai);
+                room_update($id_phong, $ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich,$luot_xem, $id_loai);
             }
             $list_roomtype = roomtype_selectall();
             $list_room = room_selectall();
@@ -314,27 +317,30 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             break;
         case 'detail-feedback':
             $id_phong = $_GET['id_phong'];
-            $items = feedback_select_by_phong($id_phong);
+            $items = feedback_select_by_room($id_phong);
             include "feedback/detail.php";
             break;
         case 'getdelete-feedback':
             $id_phan_hoi = $_GET['id_phan_hoi'];
             $id_phong = $_GET['id_phong'];
             feedback_delete($id_phan_hoi);
-            $items = feedback_select_by_phong($id_phong);
+            $items = feedback_select_by_room($id_phong);
             include 'feedback/detail.php';
             break;
-       
+        case 'logout':
+            session_destroy();
+            header("Location: ../index.php");
+            break;
         default:
             include "home.php";
             break;
     }
 } else {
-    $room_count=room_count();
-    $roomtype_count=roomtype_count();
-    $user_count=user_count();
-    $feedback_count=feedback_count();
-    $booking_count=booking_count();
+    $room_count = room_count();
+    $roomtype_count = roomtype_count();
+    $user_count = user_count();
+    $feedback_count = feedback_count();
+    $booking_count = booking_count();
     include "home.php";
 }
 ?>

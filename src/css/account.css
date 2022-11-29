@@ -23,7 +23,7 @@
 }
 
 
-.form-login input {
+.form-login input[type="text"] {
     width: 100%;
     background-color: aliceblue;
     border: 1px solid aliceblue;
@@ -31,6 +31,15 @@
     padding: 16px 8px;
     margin: 16px 0;
 }
+
+.form-login input[type="submit"] {
+    background-color: #F4694C;
+}
+
+.form-login input[type="submit"]:hover{
+    background-color: rgb(40, 117, 40);
+}
+
 
 
 

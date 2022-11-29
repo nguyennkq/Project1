@@ -11,6 +11,7 @@ include "model/gallery.php";
 include "model/service.php";
 include "model/feedback.php";
 include "model/booking.php";
+$top3=room_selectall_top3();
 if (!isset($_SESSION['booking'])) $_SESSION['booking'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
@@ -75,7 +76,12 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 // $check_admin = check_usernv($ho_ten, $mat_khau);
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
-                    header("Location: index.php");
+                    extract($_SESSION['user']);
+                    if ($vai_tro == 1) {
+                        header("Location: index.php");
+                    } else if ($vai_tro == 0) {
+                        header("Location: admin/index.php");
+                    }
                 } else {
                     $message = "Tài khoản không tồn tại, vui lòng đăng kí";
                 }
@@ -111,9 +117,9 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $tre_em = $_POST['tre_em'];
             } else {
                 $tre_em = 0;
-                $nguoi_lon=0;
+                $nguoi_lon = 0;
             }
-            $list_room_search=search_room($nguoi_lon,$tre_em);
+            $list_room_search = search_room($nguoi_lon, $tre_em);
             include "view/roomsearch.php";
             break;
         case 'roomdetail':
@@ -122,7 +128,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $room_one = room_getone($id_phong);
                 // extract($id_phong);
                 // $room_same_type = room_same_type($id_phong, $id_loai);
-                // room_view($id_phong);
+                room_view($id_phong);
                 $load_service_room = load_service_room($id_phong);
                 include "view/roomdetail.php";
             }
@@ -171,10 +177,11 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $dien_thoai = $_POST['dien_thoai'];
                 $id_nguoi = $_POST['id_nguoi'];
 
+                $thanh_tien = $_POST['thanh_tien'];
                 $id_dat = booking_insert($ngay_dat, $tong_tien, $thanh_toan, $ho_ten, $email, $dien_thoai, $id_nguoi);
                 if (isset($_SESSION['booking']) && (count($_SESSION['booking']) > 0)) {
-                    foreach ($_SESSION['booking'] as $cart) {
-                        bookingdetail_insert($cart[6], $cart[7], $cart[8], $cart[9], $cart[4], $cart[3], $cart[5], $cart[1], $cart[2], $id_dat, $cart[0]);
+                    foreach ($_SESSION['booking'] as $booking) {
+                        bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
                         // include 'view/bookinginfo.php';
                     }
                     unset($_SESSION['booking']);
@@ -185,10 +192,10 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 //     $_SESSION['booking'] = [];
                 // }
             }
-            
+
             break;
-        // case 'done':
-        //     include 'view/bookinginfo.php';
+            // case 'done':
+            //     include 'view/bookinginfo.php';
         case 'contact':
             if (isset($_POST['contact']) && ($_POST['contact'])) {
                 $email = $_POST['email'];

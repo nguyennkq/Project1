@@ -32,9 +32,9 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-scrollbar"></div>
 </div>
- 
+
 <div class="content1">
-    <form action="index.php?ctr=room-search" method="POST" >
+    <form action="index.php?ctr=room-search" method="POST">
         <div class="checkin">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
             <input type="text" id="myID" placeholder="Checkin" name="ngay_vao">
@@ -46,7 +46,7 @@
         <div class="adults">
             <label for="">Người lớn</label>
             <select name="nguoi_lon">
-                <option value="0">0</option>
+                <!-- <option value="0">0</option> -->
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -76,63 +76,33 @@
     <div class="most-rooms">
         <h1>Phòng được quan tâm nhiều</h1>
         <div class="box-rooms">
-            <div class="item-rooms">
-                <a href="">
-                    <img src="./img/phongdoi1giuong.jpg" alt="">
-                </a>
-                <div class="desc">
-                    <div class="top-desc">
-                        <h3>Phòng Đơn</h3>
-                        <p>200.000VNĐ/Đêm</p>
-                    </div>
-                    <p style="color: #F4694C;">50m2</p>
-                    <p class="main-desc">
-                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
-                    </p>
-                    <div class="buttom-desc">
-                        <p>3 Người lớn | 2 Trẻ em</p>
-                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item-rooms">
-                <a href="">
-                    <img src="./img/phongdoi1giuong.jpg" alt="">
-                </a>
-                <div class="desc">
-                    <div class="top-desc">
-                        <h3>Phòng Đơn</h3>
-                        <p>200.000VNĐ/Đêm</p>
-                    </div>
-                    <p style="color: #F4694C;">50m2</p>
-                    <p class="main-desc">
-                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
-                    </p>
-                    <div class="buttom-desc">
-                        <p>3 Người lớn | 2 Trẻ em</p>
-                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
+            <?php
+            foreach ($top3 as $room) {
+                extract($room);
+                $link_room = "index.php?ctr=roomdetail&id_phong=" . $id_phong;
+                $img = $img_path . $anh_phong;
+            ?>
+                <div class="item-rooms">
+
+                    <a href="<?=$link_room?>">
+                        <img src="<?= $img ?>" height="300px" alt="">
+                    </a>
+                    <div class="desc">
+                        <div class="top-desc">
+                            <h3><?= $ten_phong ?></h3>
+                            <p><?= $gia_phong ?>/Ngày</p>
+                        </div>
+                        <p style="color: #F4694C;"><?= $dien_tich ?>m2</p>
+                        <p class="main-desc">
+                            <?=$mo_ta?>
+                        </p>
+                        <div class="buttom-desc">
+                            <p><?=$nguoi_lon_max?> Người lớn | <?=$tre_em_max?> Trẻ em</p>
+                            <a href="<?=$link_room?>">View room <i class="fa-solid fa-caret-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item-rooms">
-                <a href="">
-                    <img src="./img/phongdoi1giuong.jpg" alt="">
-                </a>
-                <div class="desc">
-                    <div class="top-desc">
-                        <h3>Phòng Đơn</h3>
-                        <p>200.000VNĐ/Đêm</p>
-                    </div>
-                    <p style="color: #F4694C;">50m2</p>
-                    <p class="main-desc">
-                        Aliquam lacus nisl, viverra convallis sit amet penatibus nunc luctus
-                    </p>
-                    <div class="buttom-desc">
-                        <p>3 Người lớn | 2 Trẻ em</p>
-                        <a href="">View room <i class="fa-solid fa-caret-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <div class="block">

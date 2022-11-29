@@ -19,13 +19,8 @@
             <div class="rct1">
             <img src="' . $img . '" alt="">
             <h3>' . $ten_loai . '</h3>
-            <div class="list">
-                <li>1 phòng tắm</li>
-                <li>2 giường</li>
-                <li>2-3 người</li>
-            </div>
+           
             <div class="price">
-                <p>2,000,000 per night</p>
                 <a href="' . $link_roomtype . '"><button>Danh sách phòng</button></a>
             </div>
         </div>';
@@ -36,3 +31,11 @@
     </div>
 
 </main>
+
+<!-- <div class="list">
+    <li>1 phòng tắm</li>
+    <li>2 giường</li>
+    <li>2-3 người</li>
+</div> -->
+
+<!-- <p>2,000,000 per night</p> -->

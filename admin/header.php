@@ -8,8 +8,27 @@
             </div>
             |
             <div class="account">
-                <p>Admin</p>
-                <img src="../img/avatar.jpg" alt="" width="40px" height="40px">
+                <?php
+                    if(isset($_SESSION['user'])){
+                        extract($_SESSION['user']);
+                        if($vai_tro==0){
+                            echo
+                            '
+                            <p >Admin: <span style="color: #F4694C;">'.$ho_ten.'</span></p>
+                            <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
+                            ';
+                        }
+                    
+                ?>
+                <?php
+                    }else {
+                        echo 
+                        '
+                        <p>Admin</p>
+                        ';
+                    }
+                ?>
+                <!-- <img src="../img/avatar.jpg" alt="" width="40px" height="40px"> -->
             </div>
         </div>
     </header>

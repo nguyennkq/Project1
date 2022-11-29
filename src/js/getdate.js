@@ -1,3 +1,3 @@
 flatpickr("#myID", {
-    dateFormat: "d-m-Y",
+    dateFormat: "Y-m-d",
 });

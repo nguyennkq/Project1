@@ -41,6 +41,10 @@ if (isset($message) && ($message != "")) echo '<h3 id="message">' . $message . '
         <input type="text" name="dien_tich" placeholder="Diện tích">
     </div>
     <div class="form-control">
+        <label for="">Số lượt xem</label>
+        <input type="text" name="luot_xem" value="0" disabled>
+    </div>
+    <div class="form-control">
         <label for="">Trạng thái</label><br>
         <input type="radio" name="trang_thai" value="0">Đã đặt
         <input type="radio" name="trang_thai" value="1" checked>Còn trống

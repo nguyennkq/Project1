@@ -49,6 +49,10 @@ if (is_file($anhpath)) {
         <input type="text" name="dien_tich" value="<?= $dien_tich ?>">
     </div>
     <div class="form-control">
+        <label for="">Diện tích</label>
+        <input type="text" name="luot_xem" value="<?= $luot_xem ?>" disabled>
+    </div>
+    <div class="form-control">
         <label for="">Trạng thái</label><br>
         <input type="radio" name="trang_thai" value="0" <?= $trang_thai==0 ? 'checked' : "" ?>>Đã đặt
         <input type="radio" name="trang_thai" value="1" <?= $trang_thai==1 ? 'checked' : "" ?>>Còn trống
