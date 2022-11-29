@@ -1,6 +1,10 @@
 
+.box-right-content {
+    margin-left: 400px;
+}
+
 .banner-room-type{
-    margin: 0 auto;
+    margin: 158px auto 0;
     position: relative;
 }
 .banner-room-type img{

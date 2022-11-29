@@ -324,11 +324,17 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $items = feedback_select_by_phong($id_phong);
             include 'feedback/detail.php';
             break;
+       
         default:
             include "home.php";
             break;
     }
 } else {
+    $room_count=room_count();
+    $roomtype_count=roomtype_count();
+    $user_count=user_count();
+    $feedback_count=feedback_count();
+    $booking_count=booking_count();
     include "home.php";
 }
 ?>

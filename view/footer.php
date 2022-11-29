@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
     <div class="box-footer">
         <div>
             <h3>2HAN</h3>
@@ -30,7 +30,9 @@
 <script src="./src/js/getdate.js"></script>
 <script src="./src/js/slide.js"></script>
 
+<script>
 
+</script>
 </body>
 
 </html>

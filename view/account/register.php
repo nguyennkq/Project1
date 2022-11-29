@@ -1,5 +1,5 @@
 <hr>
-<form class="form-register" method="post">
+<form class="form-register" action="index.php?ctr=register"method="post">
     <input type="hidden" name="id_nguoi">
     <input type="text" placeholder="<?php echo isset($err_ten)? $err_ten : 'Tên' ?>" name="ten">
     <input type="text" placeholder="<?php echo isset($err_ho_ten)? $err_ho_ten : 'Họ tên' ?>" name="ho_ten">

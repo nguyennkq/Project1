@@ -27,13 +27,19 @@
     }
 
     function user_login($ten,$mat_khau){
-        $sql="SELECT * FROM nguoi_dung WHERE ten='".$ten."'AND mat_khau='".$mat_khau."'";
+        $sql="SELECT * FROM nguoi_dung WHERE ten='".$ten."' AND mat_khau='".$mat_khau."'";
         return pdo_query_one($sql);
     }
 
     function user_forget($email){
         $sql= "SELECT * FROM nguoi_dung WHERE email='".$email."'";
         return pdo_query_one($sql);
+    }
+
+    
+    function user_count(){
+        $sql="SELECT COUNT(*) as dem FROM nguoi_dung";
+        return pdo_query($sql);
     }
     
 ?>

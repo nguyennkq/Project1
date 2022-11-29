@@ -1,0 +1,61 @@
+table {
+  width: 100%;
+}
+
+
+.container1 {
+  margin: 0 64px;
+}
+table,th,td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 200px;
+}
+
+table thead th {
+  padding: 8px 0;
+}
+
+.container1 .form-booking {
+  margin-top: 50px;
+}
+
+.container1 .form-booking  h1 {
+  margin-bottom: 20px;
+}
+
+.container1 .form-booking  h3 {
+  margin: 16px 0;
+}
+
+.form-booking input[type="text"] {
+  width: 50%;
+  padding: 8px;
+  margin: 4px 0;
+  border: 0.5px solid #ccc;
+  border-radius: 8px;
+}
+.form-booking input[type="radio"] {
+  margin-right: 8px;
+}
+.container1 .form-booking ul li {
+  list-style: none;
+  margin: 8px 0;
+}
+
+.container1 input[type="submit"], input[type="reset"],input[type="button"]{
+    background-color: #F4694C;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: 0.5px solid #F4694C;
+}
+
+.container1 input[type="submit"]:hover, input[type="reset"]:hover,input[type="button"]:hover{
+  background-color: #fff;
+  color: #F4694C;
+  border: 0.5px solid #F4694C;
+}

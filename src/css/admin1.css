@@ -173,3 +173,23 @@ form input[type="radio"]{
 tr .desc {
     max-width: 200px;
 }
+.box-dashboard {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    margin: 64px 44px;
+  }
+.service-item {
+    width: 100%;
+    height: 180px;
+    text-align: center;
+  }
+.service-item i {
+    color: #F4694C;
+    text-align: center;
+    font-size: 50px;
+  }
+.service-item h1 {
+    margin: 10px 0;
+    font-size: 40px;
+  }

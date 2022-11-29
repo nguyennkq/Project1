@@ -1,0 +1,42 @@
+main {
+    margin-top: 200px;
+}
+
+aside {
+    top: 180px;
+    position: fixed;
+    background-color: #fff;
+    z-index: 6;
+    float: left;
+}
+
+
+aside form input{
+    padding-left: 8px;
+    width: 100%;
+    margin: 4px 0;
+    height: 30px;
+    border: 1px solid #F4694C;
+    background-color:#F5F6F8;
+    margin-bottom: 12px;
+    border-radius: 7px;
+}
+
+aside form select {
+    margin-bottom: 12px;
+}
+
+aside form input[type="submit"]{
+    display: block;
+    width: 250px;
+    cursor: pointer;
+    background-color: #F4694C;
+    color: white;
+    border: 1px solid #F4694C;
+    font-size: 16px;
+    margin-top: 16px;
+}
+aside form input[type="submit"]:hover{
+    background-color: white;
+    color: #F4694C;
+}

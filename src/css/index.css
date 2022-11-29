@@ -4,6 +4,10 @@
     box-sizing: border-box;
 
 }
+.container {
+    margin-top: 160px;
+}
+
 
 html{
     font-family: 'Mulish', sans-serif;
@@ -24,12 +28,16 @@ body {
 
 
 header{
-    
+    position: fixed;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
 }
 
 .swiper {
     max-width: 100%;
-    height: 600px
+    height: 600px;
+    margin-top: 160px;
 }
 
 .swiper-slide {
@@ -155,7 +163,7 @@ header{
     border-bottom-right-radius: 4px;
 }
 
-.content1 form button {
+.content1 form input[type="submit"] {
     padding: 16px 48px;
     border: 1px solid #fff;
     background-color: #F4694C;
@@ -164,7 +172,7 @@ header{
     color: #fff;
     border-radius: 4px;
 }
-.content1 form button:hover {
+.content1 form input[type="submit"]:hover {
     background-color: #fff;
     color: #F4694C;
 }
@@ -424,6 +432,7 @@ footer {
     position: sticky;
     top: 100%;
     width: 100%;
+    z-index: 100;
 }
 
 .box-footer {

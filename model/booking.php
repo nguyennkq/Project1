@@ -47,10 +47,10 @@
     //     pdo_execute($sql,$id_dat);
     // }         
 
-    // function booking_count(){
-    //     $sql="SELECT COUNT(*) FROM dat_phong";
-    //     return pdo_query($sql);
-    // }
+    function booking_count(){
+        $sql="SELECT COUNT(*) as dem FROM dat_phong";
+        return pdo_query($sql);
+    }
 
     // function booking_getone($id_dat){
     //     $sql="SELECT * FROM dat_phong WHERE id_dat=?";

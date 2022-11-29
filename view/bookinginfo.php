@@ -1,0 +1,10 @@
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>
+<h1>Cảm ơn bạn đã đặt phòng</h1>

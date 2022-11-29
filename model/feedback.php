@@ -23,4 +23,10 @@
                 . " HAVING count_fb > 0";
         return pdo_query($sql);
     }
+
+
+    function feedback_count(){
+        $sql="SELECT COUNT(*) as dem FROM phan_hoi";
+        return pdo_query($sql);
+    }
 ?>

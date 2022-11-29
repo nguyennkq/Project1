@@ -20,7 +20,7 @@
             <!-- <button type="submit" name="contact">SEND MESSAGE</button> -->
         </form>
     </article>
-    <aside class="contact-our">
+    <div class="contact-our">
         <div>
             <i class="fa-solid fa-phone"></i>
             <p><a href="tel:+0932476977">0932476977</a></p>
@@ -33,5 +33,5 @@
             <i class="fa-solid fa-location-dot"></i>
             <p>Trịnh Văn Bô, Nam Từ Liêm, Hà Nội</p>
         </div>
-    </aside>
+    </div>
 </div>

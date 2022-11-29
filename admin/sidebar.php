@@ -56,10 +56,6 @@
                         <a href="index.php?ctr=list-contact">Liên hệ</a>
                     </li>
                     <li>
-                        <i class="fas fa-gift"></i>
-                        <a href="index.php?ctr=list-coupon">Ưu đãi</a>
-                    </li>
-                    <li>
                         <i class="fa-solid fa-comment"></i>
                         <a href="index.php?ctr=list-feedback">Phản hồi</a>
                     </li>

@@ -23,7 +23,10 @@
         $sql="DELETE FROM loai_phong WHERE id_loai=?";
         pdo_execute($sql,$id_loai);
     }
-
+    function roomtype_count(){
+        $sql="SELECT COUNT(*) as dem FROM loai_phong";
+        return pdo_query($sql);
+    }
     
     function name_roomtype($id_loai){
         if($id_loai>0){

@@ -2,20 +2,20 @@
     <?php
     include "view/search.php";
     ?>
+    <!-- chia layout -->
     <div class="box-right-content">
         <div class="banner-room-type">
             <img src="img/banner.png" alt="">
-            <p><?php echo $ten_loai ?></p>
+            <p>Phòng</p>
         </div>
         <div class="content">
             <div class="room">
                 <?php
-                foreach ($list_room as $room) {
+                foreach ($list_room_search as $room) {
                     extract($room);
                     $img_phong = $img_path . $anh_phong;
                     $link_phong = "index.php?ctr=roomdetail&id_phong=" . $id_phong;
-                    // echo
-                    // '
+                 
                 ?>
                     <div class="box-item-room">
                         <a href="<?= $link_phong ?>">
@@ -43,4 +43,5 @@
             </div>
         </div>
     </div>
+
 </main>

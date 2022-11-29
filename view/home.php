@@ -32,35 +32,46 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-scrollbar"></div>
 </div>
-
+ 
 <div class="content1">
-    <form action="">
+    <form action="index.php?ctr=room-search" method="POST" >
         <div class="checkin">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" id="myID" placeholder="Checkin">
+            <input type="text" id="myID" placeholder="Checkin" name="ngay_vao">
         </div>
         <div class="checkout">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" id="myID" placeholder="Checkout">
+            <input type="text" id="myID" placeholder="Checkout" name="ngay_tra">
         </div>
         <div class="adults">
             <label for="">Người lớn</label>
-            <select name="">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
+            <select name="nguoi_lon">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
             </select>
         </div>
         <div class="children">
             <label for="">Trẻ em</label>
-            <select name="">
-                <option value="">0</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
+            <select name="tre_em">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
             </select>
         </div>
-        <button>Check</button>
+        <input type="submit" name="search" value="Check">
     </form>
     <div class="most-rooms">
         <h1>Phòng được quan tâm nhiều</h1>
