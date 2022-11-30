@@ -1,35 +1,29 @@
-<?php
-foreach ($nguoi_dung as $nguoi) {
-    extract($nguoi);
-}
-
-?>
 <div class="container1">
-<div>THÔNG TIN ĐẶT PHÒNG</div>
-<table>
-    <thead>
-        <th>Hình</th>
-        <th>Tên phòng</th>
-        <th>Giá phòng</th>
-        <th>Số lượng</th>
-        <th>Ngày vào</th>
-        <th>Ngày trả</th>
-        <th>Người lớn</th>
-        <th>Trẻ em</th>
-        <th>Thành tiền</th>
-    </thead>
-    <?php
-    $tong = 0;
-    $i = 0;
-    global $img_path;
-    if (isset($_SESSION['booking']) && isset($_GET['id-booking'])) {
-        $id = $_GET['id-booking'];
-        $img = $_SESSION['booking'][$id][2];
-        $tien = $_SESSION['booking'][$id][3] * $_SESSION['booking'][$id][4] * floor(abs(strtotime($_SESSION['booking'][$id][6]) - strtotime($_SESSION['booking'][$id][7])) / (60 * 60 * 24));
-        $tong += $tien;
-        $xoasp_td = '<td><a href = "index.php?ctr=delete-booking&id-booking=' . $i . '"><input type = "button" value = "Xoá"></a></td>';
-        $dat_hang = '<td><a href = "index.php?ctr=info-booking&id-booking=' . $i . '"><input type = "button" value = "Đặt hàng"></a></td>';
-        echo '
+    <div>THÔNG TIN ĐẶT PHÒNG</div>
+    <table>
+        <thead>
+            <th>Hình</th>
+            <th>Tên phòng</th>
+            <th>Giá phòng</th>
+            <th>Số lượng</th>
+            <th>Ngày vào</th>
+            <th>Ngày trả</th>
+            <th>Người lớn</th>
+            <th>Trẻ em</th>
+            <th>Thành tiền</th>
+        </thead>
+        <?php
+        $tong = 0;
+        $i = 0;
+        global $img_path;
+        if (isset($_SESSION['booking']) && isset($_GET['id-booking'])) {
+            $id = $_GET['id-booking'];
+            $img = $_SESSION['booking'][$id][2];
+            $tien = $_SESSION['booking'][$id][3] * $_SESSION['booking'][$id][4] * floor(abs(strtotime($_SESSION['booking'][$id][6]) - strtotime($_SESSION['booking'][$id][7])) / (60 * 60 * 24));
+            $tong += $tien;
+            $xoasp_td = '<td><a href = "index.php?ctr=delete-booking&id-booking=' . $id . '"><input type = "button" value = "Xoá"></a></td>';
+            $dat_hang = '<td><a href = "index.php?ctr=info-booking&id-booking=' . $id . '"><input type = "button" value = "Đặt hàng"></a></td>';
+            echo '
         <tr>
                            <td><img src = "' . $img . '" alt = "" height = "150px" width="150px"></td>
                             <td id="hi">' . $_SESSION['booking'][$id][1] . '</td>
@@ -42,12 +36,12 @@ foreach ($nguoi_dung as $nguoi) {
                             <td>' . $tien . '</td>
                             <input type="hidden" value="' . $id . '" name="id-booking">
                             </tr>';
-    } else {
-        foreach ($_SESSION['booking'] as $booking) {
-            $img = $booking[2];
-            $ttien = $booking[3] * $booking[4] * floor(abs(strtotime($booking[6]) - strtotime($booking[7])) / (60 * 60 * 24));
-            $tong += $ttien;
-            echo '
+        } else {
+            foreach ($_SESSION['booking'] as $booking) {
+                $img = $booking[2];
+                $ttien = $booking[3] * $booking[4] * floor(abs(strtotime($booking[6]) - strtotime($booking[7])) / (60 * 60 * 24));
+                $tong += $ttien;
+                echo '
         <tr>
                            <td><img src = "' . $img . '" alt = "" height = "150px" width="150px"></td>
                             <td>' . $booking[1] . '</td>
@@ -59,44 +53,63 @@ foreach ($nguoi_dung as $nguoi) {
                             <td>' . $booking[9] . '</td>
                             <td>' . $ttien . '</td>
                             </tr>';
-            $i += 1;
+                $i += 1;
+            }
         }
-    }
-    echo '<tr>
-               <td colspan="8" style="text-align: left;padding: 16px 0;">Tổng</td>
+        echo '<tr>
+               <td colspan="8" style="text-align: left;padding-left: 16px;">Tổng</td>
                <td>' . $tong . '</td>
               </tr>';
 
+        ?>
+    </table>
+
+    <?php
+
+    // if (isset($_SESSION['user'])) {
+    //     foreach ($_SESSION['user'] as $user) {
+    //         extract($user);
+    //     }
+    // }
+
     ?>
-</table>
-<form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
-    <input type="hidden" name="id_nguoi" value="<?= $id_nguoi ?>">
-    <input type="hidden" name="tong_tien" value="<?=$tong?>">
-    <input type="hidden" name="thanh_tien" value="<?=$ttien?>">
-    <h1>
-        THÔNG TIN ĐẶT PHÒNG
-    </h1>
-    <div class="box-content">
-        <div>
-            <label >Họ và Tên</label><br>
-            <input type="text" name="ho_ten">
+    <form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
+        <input type="hidden" name="id_nguoi" value="<?php
+                                                    if (isset($_SESSION['user'])) echo $id_nguoi;
+                                                    ?>">
+        <input type="hidden" name="tong_tien" value="<?= $tong ?>">
+        <input type="hidden" name="thanh_tien" value="<?= $ttien ?>">
+        <h1>
+            THÔNG TIN ĐẶT PHÒNG
+        </h1>
+        <div class="box-content">
+            <div>
+                <label>Họ và Tên</label><br>
+                <input type="text" name="ho_ten" value="<?php
+                                                        if (isset($_SESSION['user'])) echo $ho_ten;
+
+                                                        ?>">
+            </div>
+            <div>
+                <label>Email</label><br>
+                <input type="text" name="email" value="<?php
+                                                        if (isset($_SESSION['user'])) echo $email;;
+                                                        ?>">
+            </div>
+            <div>
+                <label>Điện thoại</label><br>
+                <input type="text" name="dien_thoai" value="<?php
+                                                            if (isset($_SESSION['user'])) echo $so_dien_thoai;
+                                                            ?>">
+            </div>
         </div>
-        <div>
-            <label >Email</label><br>
-            <input type="text" name="email">
-        </div>
-        <div>
-            <label>Điện thoại</label><br>
-            <input type="text" name="dien_thoai">
-        </div>
-    </div>
-    <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
         <ul>
             <li><input type="radio" name="thanh_toan" value="1" checked>Thanh toán tiền mặt</li>
             <li><input type="radio" name="thanh_toan" value="2">Chuyển khoản ngân hàng</li>
             <li><input type="radio" name="thanh_toan" value="3">Thanh toán online</li>
         </ul>
-    <input type="submit" value="Đặt phòng" name="pay-booking">
-    <input type="reset" value="Nhập lại">
-</form>
+        <input type="submit" value="Đặt phòng" name="pay-booking">
+        <input type="reset" value="Nhập lại">
+    </form>
 </div>

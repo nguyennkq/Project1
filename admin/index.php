@@ -84,7 +84,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_phong"]["name"]);
                 if (move_uploaded_file($_FILES["anh_phong"]["tmp_name"], $target_file)) {
-                    room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich,$luot_xem,$id_loai);
+                    room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $luot_xem, $id_loai);
                     $message = "Thêm thành công";
                 } else {
                     $message = "Không thêm được";
@@ -123,7 +123,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_phong"]["name"]);
                 move_uploaded_file($_FILES["anh_phong"]["tmp_name"], $target_file);
-                room_update($id_phong, $ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich,$luot_xem, $id_loai);
+                room_update($id_phong, $ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $luot_xem, $id_loai);
             }
             $list_roomtype = roomtype_selectall();
             $list_room = room_selectall();
@@ -293,6 +293,11 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
         case 'list-contact':
             $list_contact = contact_selectall();
             include "contact/list.php";
+            break;
+        case 'getdelete-booking':
+            $id_chi_tiet = $_GET['id'];
+            booking_delete($id_chi_tiet);
+            include 'booking/detail.php';
             break;
         case 'getdelete-contact':
             if (isset($_GET['id_lien_he']) && $_GET['id_lien_he'] > 0) {

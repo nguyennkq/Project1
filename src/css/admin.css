@@ -174,9 +174,9 @@ tr .desc {
     max-width: 200px;
 }
 .box-dashboard {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     gap: 32px;
-    justify-content: space-between;
     margin: 64px 44px;
   }
 .service-item {

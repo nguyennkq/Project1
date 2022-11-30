@@ -8,7 +8,7 @@
         <th>Ảnh phòng</th>
         <th>Người lớn tối đa</th>
         <th>Trẻ em tối đa</th>
-        <th>Trạng thái</th>
+        <!-- <th>Trạng thái</th> -->
         <th>Diện tích</th>
         <th>Lượt xem</th>
         <th>Action</th>
@@ -34,7 +34,7 @@
                 <td><?= $anh_phong ?></td>
                 <td><?= $nguoi_lon_max ?></td>
                 <td><?= $tre_em_max ?></td>
-                <td><?= $trang_thai==1 ? 'Còn trống' : 'Đã đặt' ?></td>
+                <!-- <td><?= $trang_thai==1 ? 'Còn trống' : 'Đã đặt' ?></td> -->
                 <td><?= $dien_tich ?></td>
                 <td><?= $luot_xem ?></td>
                 <td>

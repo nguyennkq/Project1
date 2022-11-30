@@ -72,6 +72,7 @@
                         <a href="index.php?ctr=login">Đăng nhập</a>
                     <?php } ?>
                 </div>
+                <a href="index.php?ctr=view-booking"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </header>
         <hr>

@@ -14,6 +14,7 @@
         <?php
         foreach ($detail_booking as $booking) {
             extract($booking);
+            $xoa = "index.php?ctr=getdelete-booking&id=" . $id_chi_tiet;
         ?>
             <tr>
                 <td><?= $id_dat ?></td>
@@ -24,7 +25,7 @@
                 <td><?= $tre_em ?></td>
                 <td><?= $thanh_tien ?></td>
                 <td>
-                    <a href=""><input type="button" value="Xóa"></a>
+                    <a href="index.php?ctr=getdelete-booking&id=<?=$id_chi_tiet?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php
@@ -32,4 +33,3 @@
         ?>
     </tbody>
 </table>
-<a href=""><input type="button" value="Thêm mới"></a>

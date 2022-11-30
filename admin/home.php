@@ -7,7 +7,7 @@
         <section class="service-item">
         <i class="fa-solid fa-bed"></i>
         <h1>' . $dem . '</h1>
-        <p>SỐ LƯỢNG PHÒNG</p>
+        <p>PHÒNG</p>
     </section>
 
         ';
@@ -35,7 +35,7 @@
         <section class="service-item">
         <i class="fa-solid fa-users"></i>
         <h1>' . $dem . '</h1>
-        <p>NHÂN VIÊN</p>
+        <p>THÀNH VIÊN</p>
     </section>
         ';
     }

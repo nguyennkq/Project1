@@ -36,6 +36,16 @@
         // pdo_execute($sql,$ngay_dat,$tong_tien,$thanh_toan,$ho_ten,$email,$dien_thoai,$id_nguoi);
     }
 
+    
+    function booking_insert_user_null($ngay_dat,$tong_tien,$thanh_toan,$ho_ten,$email,$dien_thoai){
+        $conn=pdo_get_connection();
+        $sql="INSERT INTO dat_phong(ngay_dat,tong_tien,thanh_toan,ho_ten,email,dien_thoai) VALUES ('".$ngay_dat."','".$tong_tien."','".$thanh_toan."','".$ho_ten."','".$email."','".$dien_thoai."'";
+        $conn->exec($sql);
+        $last_id=$conn->lastInsertId();
+        return $last_id;
+        // pdo_execute($sql,$ngay_dat,$tong_tien,$thanh_toan,$ho_ten,$email,$dien_thoai,$id_nguoi);
+    }
+
     function bookingdetail_insert($ngay_vao,$ngay_tra,$nguoi_lon,$tre_em,$so_luong,$gia_phong,$thanh_tien,$ten_phong,$anh_phong,$id_dat,$id_phong){
         $sql="INSERT INTO chi_tiet(ngay_vao,ngay_tra,nguoi_lon,tre_em,so_luong,don_gia,thanh_tien,ten_phong,anh_phong,id_dat,id_phong) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         pdo_execute($sql,$ngay_vao,$ngay_tra,$nguoi_lon,$tre_em,$so_luong,$gia_phong,$thanh_tien,$ten_phong,$anh_phong,$id_dat,$id_phong);
@@ -56,6 +66,10 @@
     //     $sql="SELECT * FROM dat_phong WHERE id_dat=?";
     //     return pdo_query_one($sql,$id_dat);
     // }
-
+           
+    function booking_delete($id_chi_tiet){
+        $sql="DELETE FROM chi_tiet WHERE id=".$id_chi_tiet;
+        pdo_execute($sql);
+    }
 
 ?>

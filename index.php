@@ -11,7 +11,7 @@ include "model/gallery.php";
 include "model/service.php";
 include "model/feedback.php";
 include "model/booking.php";
-$top3=room_selectall_top3();
+$top3 = room_selectall_top3();
 if (!isset($_SESSION['booking'])) $_SESSION['booking'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
@@ -98,14 +98,10 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
         case 'roomtype':
             // $search_room=search_room($nguoi_lon_max,$tre_em_max);
             $list_roomtype = roomtype_selectall();
-            include 'view/roomtype.php';
+            include 'view/room-type.php';
             break;
         case 'room';
-            // if (isset($_GET['id_loai']) && ($_GET['id_loai'] > 0)) {
             $id_loai = $_GET['id_loai'];
-            // } else {
-            // $id_loai = 0;
-            // }
             $list_room = room_selectallbyid($id_loai);
             $ten_loai = name_roomtype($id_loai);
             // $anh_loai= name_roomtype($id_loai);
@@ -120,7 +116,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $nguoi_lon = 0;
             }
             $list_room_search = search_room($nguoi_lon, $tre_em);
-            include "view/roomsearch.php";
+            include "view/room-search.php";
             break;
         case 'roomdetail':
             if (isset($_GET['id_phong']) && ($_GET['id_phong'] > 0)) {
@@ -130,7 +126,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 // $room_same_type = room_same_type($id_phong, $id_loai);
                 room_view($id_phong);
                 $load_service_room = load_service_room($id_phong);
-                include "view/roomdetail.php";
+                include "view/room-detail.php";
             }
             break;
         case 'add-booking':
@@ -149,7 +145,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $add = [$id_phong, $ten_phong, $anh_phong, $gia_phong, $so_luong, $thanh_tien, $ngay_vao, $ngay_tra, $nguoi_lon, $tre_em];
                 array_push($_SESSION['booking'], $add);
             }
-            include 'view/bookingdetail.php';
+            include 'view/booking-detail.php';
             break;
         case 'delete-booking':
             // Xóa
@@ -161,7 +157,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             header('Location: index.php?ctr=view-booking');
             break;
         case 'view-booking':
-            include 'view/bookingdetail.php';
+            include 'view/booking-detail.php';
             break;
         case 'info-booking':
             $nguoi_dung = user_selectall();
@@ -176,26 +172,20 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $email = $_POST['email'];
                 $dien_thoai = $_POST['dien_thoai'];
                 $id_nguoi = $_POST['id_nguoi'];
-
                 $thanh_tien = $_POST['thanh_tien'];
                 $id_dat = booking_insert($ngay_dat, $tong_tien, $thanh_toan, $ho_ten, $email, $dien_thoai, $id_nguoi);
+                $_SESSION['id_dat'] = $id_dat;
                 if (isset($_SESSION['booking']) && (count($_SESSION['booking']) > 0)) {
                     foreach ($_SESSION['booking'] as $booking) {
+                        if (isset($_SESSION['user'])) {
+                        }
                         bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
-                        // include 'view/bookinginfo.php';
                     }
                     unset($_SESSION['booking']);
                 }
-                // if (isset($_POST['id-booking'])) {
-                //     array_splice($_SESSION['booking'], $_POST['id-booking'], 1);
-                // } else {
-                //     $_SESSION['booking'] = [];
-                // }
             }
-
+            include "view/booking-info.php";
             break;
-            // case 'done':
-            //     include 'view/bookinginfo.php';
         case 'contact':
             if (isset($_POST['contact']) && ($_POST['contact'])) {
                 $email = $_POST['email'];
