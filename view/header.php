@@ -22,9 +22,9 @@
 </head>
 
 <body>
-<nav>
-  
-</nav>
+    <nav>
+
+    </nav>
     <div class="box-container">
         <header>
             <div class="nav">
@@ -33,20 +33,32 @@
                 </div>
                 <div class="menu">
                     <ul id="nav">
-                        <li ><a href="index.php">Trang chủ</a></li>
-                        <li ><a href="index.php?ctr=roomtype">Phòng</a></li>
-                        <li ><a href="index.php?ctr=blog">Blog</a></li>
-                        <li ><a href="index.php?ctr=discount">Ưu đãi</a></li>
-                        <li ><a href="index.php?ctr=gallery">Thư viện</a></li>
-                        <li ><a href="index.php?ctr=service">Dịch vụ</a></li>
-                        <li ><a href="index.php?ctr=contact">Liên hệ</a></li>
+                        <li><a href="index.php">Trang chủ</a></li>
+                        <li><a href="index.php?ctr=roomtype">Phòng</a></li>
+                        <li><a href="index.php?ctr=blog">Blog</a></li>
+                        <li><a href="index.php?ctr=discount">Ưu đãi</a></li>
+                        <li><a href="index.php?ctr=gallery">Thư viện</a></li>
+                        <li><a href="index.php?ctr=service">Dịch vụ</a></li>
+                        <li><a href="index.php?ctr=contact">Liên hệ</a></li>
                     </ul>
                 </div>
                 <div class="account">
-                <a href="index.php?ctr=register">Đăng ký</a>
-                <span>|</span>
-                <a href="index.php?ctr=login">Đăng nhập</a>
-                <a class="logout" href=""><i class="fa-solid fa-right-to-bracket"></i></a>
-            </div>
+                    <?php 
+                        if (isset($_SESSION['nguoi_dung'])) { 
+                        extract($_SESSION['nguoi_dung']);
+                            if($_SESSION['nguoi_dung']['vai_tro']==0){
+                    ?>
+                        <a href="admin/index.php">Vào trang admin</a>
+                        <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <?php }else{ ?>
+                            <a href="index.php?ctr=doimk">Đổi mật khẩu</a>  
+                            <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <?php } ?>
+                    <?php }else{ ?>
+                    <a href="index.php?ctr=register">Đăng ký</a>
+                    <span>|</span>
+                    <a href="index.php?ctr=login">Đăng nhập</a>
+                    <?php }?>
+                </div>
             </div>
         </header>
