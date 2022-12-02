@@ -26,6 +26,11 @@
             return pdo_query($sql);
         }
 
+        function bookingdetail_selectall_by_user($id_ng){
+            $sql="SELECT c.*, d.tong_tien,d.ngay_dat, n.ho_ten FROM nguoi_dung n INNER JOIN  dat_phong d ON d.id_nguoi=n.id_nguoi INNER JOIN chi_tiet c ON c.id_dat = d.id WHERE n.id_nguoi=?";
+            return pdo_query($sql,$id_ng);
+        }
+
 
     function booking_insert($ngay_dat,$tong_tien,$thanh_toan,$ho_ten,$email,$dien_thoai,$id_nguoi){
         $conn=pdo_get_connection();

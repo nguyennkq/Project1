@@ -1,3 +1,3 @@
-flatpickr("#myID", {
+flatpickr(".myID", {
     dateFormat: "Y-m-d",
 });

@@ -66,12 +66,6 @@
 
     <?php
 
-    // if (isset($_SESSION['user'])) {
-    //     foreach ($_SESSION['user'] as $user) {
-    //         extract($user);
-    //     }
-    // }
-
     ?>
     <form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
         <input type="hidden" name="id_nguoi" value="<?php

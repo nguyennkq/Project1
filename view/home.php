@@ -37,16 +37,15 @@
     <form action="index.php?ctr=room-search" method="POST">
         <div class="checkin">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" id="myID" placeholder="Checkin" name="ngay_vao"  data-min-date=today>
+            <input type="text" class="myID" placeholder="Checkin" name="ngay_vao"  data-min-date=today>
         </div>
         <div class="checkout">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" id="myID" placeholder="Checkout" name="ngay_tra"  data-min-date=today>
+            <input type="text" class="myID" placeholder="Checkout" name="ngay_tra"  data-min-date=today>
         </div>
         <div class="adults">
             <label for="">Người lớn</label>
             <select name="nguoi_lon">
-                <!-- <option value="0">0</option> -->
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

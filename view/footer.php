@@ -30,8 +30,9 @@
 <script src="./src/js/getdate.js"></script>
 <script src="./src/js/slide.js"></script>
 
-<script>
-
+<script type="text/javascript">
+    document.getElementById('nguoi_lon').value = "<?php if (isset($nguoi_lon)) echo $nguoi_lon ?>";
+    document.getElementById('tre_em').value = "<?php if (isset($tre_em)) echo $tre_em ?>";
 </script>
 </body>
 

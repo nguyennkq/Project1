@@ -37,10 +37,7 @@
             return "";
         }
     }
-
-
     function roomtype_getone($id_loai){
         $sql="SELECT * FROM loai_phong WHERE id_loai=?";
         return pdo_query_one($sql,$id_loai);
     }
-?>

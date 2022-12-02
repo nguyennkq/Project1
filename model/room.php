@@ -40,6 +40,12 @@
         pdo_execute($sql);
     }
 
+    
+    function room_update_after_booking($id_phong){
+            $sql="UPDATE phong SET trang_thai=0 WHERE id_phong=".$id_phong;
+        pdo_execute($sql);
+    }
+
     function room_delete($id_phong){
         $sql = "DELETE FROM phong WHERE id_phong=?";
         pdo_execute($sql,$id_phong);

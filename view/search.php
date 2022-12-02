@@ -2,15 +2,15 @@
     <form action="index.php?ctr=room-search" method="POST" enctype="multipart/form-data">
         <div class="form-group-check">
             Check in
-            <input name="ngay_vao" id="myID"  data-min-date=today placeholder="Checkin">
+            <input name="ngay_vao" class="myID" id="startDate" data-min-date=today placeholder="Checkin" value="<?php if (isset($ngay_vao)) echo $ngay_vao ?>">
         </div>
         <div class="form-group-check">
             Check out
-            <input name="ngay_tra" id="myID"  data-min-date=today  placeholder="Checkout" >
+            <input name="ngay_tra" class="myID" id="endDate" data-min-date=today placeholder="Checkout" value="<?php if (isset($ngay_tra)) echo $ngay_tra ?>">
         </div>
         <div class="form-group">
             Người lớn
-            <select name="nguoi_lon" id="">
+            <select name="nguoi_lon" id="nguoi_lon">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             Trẻ em
-            <select name="tre_em" id="">
+            <select name="tre_em" id="tre_em">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -35,6 +35,7 @@
                 <option value="8">8</option>
             </select>
         </div>
+        
         <input type="submit" name="search" value="Check">
     </form>
 </aside>

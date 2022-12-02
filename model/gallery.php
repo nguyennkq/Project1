@@ -33,5 +33,10 @@
         return pdo_query_one($sql,$id_thu_vien);
     }
 
+    function load_gallery_room($id_phong){
+        $sql="SELECT * FROM thu_vien where id_phong=".$id_phong;
+        return pdo_query($sql);
+    }
+
 
 ?>

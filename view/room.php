@@ -34,7 +34,7 @@
                                 <p><?= $nguoi_lon_max ?> Người lớn | <?= $tre_em_max ?> Trẻ em</p>
                                 <a href="index.php?ctr=roomdetail&id_phong=<?= $id_phong ?>">View room <i class="fa-solid fa-caret-right"></i></a>
                             </div>
-                            <!-- <button><?= $trang_thai == 1 ? 'Còn trống' : 'Đã đặt' ?></button> -->
+                            <button><?= $trang_thai == 1 ? 'Còn trống' : 'Đã đặt' ?></button>
                         </div>
                     </div>
                 <?php

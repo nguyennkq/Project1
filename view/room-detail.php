@@ -15,12 +15,28 @@ $img_room = $img_path . $anh_phong;
         '
             <div class="box-image">
                 <div>
-                    <img src="' . $img_room . '" alt="">
+                    <img id="mainImage" src="' . $img_room . '" alt="">
                 </div>
             </div>
-            
         ';
         ?>
+        <br />
+
+        <div id="divId" onclick="changeImageOnClick(event)">
+            <?php
+            foreach ($load_gallery_room as $gallery) {
+                extract($gallery);
+                $img_gallery = $img_path . $anh_thu_vien;
+                echo
+                '
+                <img class="imgStyle" src="' . $img_gallery . '" />
+                ';
+            }
+            ?>
+            <?php
+            echo '<img class="imgStyle" src="' . $img_room . '" />';
+            ?>
+        </div>
 
         <div class="room-detail">
             <div class="description">
@@ -129,6 +145,29 @@ $img_room = $img_path . $anh_phong;
                 });
                 // Load form bình luận dựa theo id phòng
             });
+
+            // Gallery phòng
+            var images = document.getElementsByTagName("img");
+
+            for (var i = 0; i < images.length; i++) {
+                images[i].onmouseover = function() {
+                    this.style.cursor = "hand";
+                    this.style.borderColor = "red";
+                };
+                images[i].onmouseout = function() {
+                    this.style.cursor = "pointer";
+                    this.style.borderColor = "grey";
+                };
+            }
+
+            function changeImageOnClick(event) {
+                // debugger;
+                var targetElement = event.srcElement;
+                // debugger;
+                if (targetElement.tagName === "IMG") {
+                    mainImage.src = targetElement.getAttribute("src");
+                }
+            }
         </script>
 
         <h3 style="margin-top: 12px;">Phản hồi</h3>

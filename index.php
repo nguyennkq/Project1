@@ -91,6 +91,10 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
         case 'forget':
             include 'view/account/forget.php';
             break;
+        case 'info-user':
+            
+            include 'view/account/info-user.php';
+            break;
         case 'logout':
             session_destroy();
             header("Location: index.php");
@@ -116,6 +120,14 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $nguoi_lon = 0;
             }
             $list_room_search = search_room($nguoi_lon, $tre_em);
+            if(isset($_POST['search'])){
+                $ngay_vao=$_POST['ngay_vao'];
+                $ngay_tra=$_POST['ngay_tra'];
+                $_SESSION['ngay_vao']=$ngay_vao;
+                $_SESSION['ngay_tra']=$ngay_tra;
+                $_SESSION['nguoi_lon']=$nguoi_lon;
+                $_SESSION['tre_em']=$tre_em;
+            }
             include "view/room-search.php";
             break;
         case 'roomdetail':
@@ -125,6 +137,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 // extract($id_phong);
                 // $room_same_type = room_same_type($id_phong, $id_loai);
                 room_view($id_phong);
+                $load_gallery_room = load_gallery_room($id_phong);
                 $load_service_room = load_service_room($id_phong);
                 include "view/room-detail.php";
             }
@@ -180,6 +193,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                         if (isset($_SESSION['user'])) {
                         }
                         bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
+                        room_update_after_booking($booking[0]);
                     }
                     unset($_SESSION['booking']);
                 }
@@ -209,6 +223,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             break;
     }
 } else {
+    
     include "view/home.php";
 }
 

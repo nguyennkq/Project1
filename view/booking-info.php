@@ -23,7 +23,7 @@
                 echo '
                 <tbody>
                     <tr>
-                        <td><img src="'.$img.'" width="200px" height="200px" alt=""></td>
+                        <td><img src="' . $img . '" width="200px" height="200px" alt=""></td>
                         <td>
                             <p>Tên phòng: <span> ' . $show['ten_phong'] . '</span></p>
                             <p>Đặt phòng từ: <span>' . $show['ngay_vao'] . '</span> đến <span>' . $show['ngay_tra'] . '</span></p>
@@ -33,12 +33,12 @@
                     </tr>
                     </tbody>
                     ';
-                }
-                echo 
-                '
+            }
+            echo
+            '
                 <tr>
                     <td colspan="2" style="text-align: left; padding-left: 100px;">Tổng</td>
-                    <td>'.$tong.'</td>
+                    <td>' . $tong . '</td>
                 </tr>
                 ';
         }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./src/css/contact1.css">
     <link rel="stylesheet" href="./src/css/service.css">
     <link rel="stylesheet" href="./src/css/roomtype.css">
-    <link rel="stylesheet" href="./src/css/account.css">
+    <link rel="stylesheet" href="./src/css/account1.css">
     <link rel="stylesheet" href="./src/css/bookingdetail.css">
     <link rel="stylesheet" href="./src/css/aside.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -48,9 +48,9 @@
                             echo
                             '
                             <div>
+                            <a class="info-user" href="index.php?ctr=info-user"><i class="fa-solid fa-user"></i></a>
                             Xin chào: <span style="color: #F4694C;">' . $ho_ten . '</span>
                             <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
-
                         </div>
                             ';
                         } else {
@@ -72,7 +72,7 @@
                         <a href="index.php?ctr=login">Đăng nhập</a>
                     <?php } ?>
                 </div>
-                <a href="index.php?ctr=view-booking"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a style="font-size: 20px; color: #F4694C" href="index.php?ctr=view-booking"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </header>
         <hr>
