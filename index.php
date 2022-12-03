@@ -11,6 +11,7 @@ include "model/gallery.php";
 include "model/service.php";
 include "model/feedback.php";
 include "model/booking.php";
+include "view/config-vnpay.php";
 $top3 = room_selectall_top3();
 if (!isset($_SESSION['booking'])) $_SESSION['booking'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -92,7 +93,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             include 'view/account/forget.php';
             break;
         case 'info-user':
-            
+
             include 'view/account/info-user.php';
             break;
         case 'logout':
@@ -120,13 +121,13 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $nguoi_lon = 0;
             }
             $list_room_search = search_room($nguoi_lon, $tre_em);
-            if(isset($_POST['search'])){
-                $ngay_vao=$_POST['ngay_vao'];
-                $ngay_tra=$_POST['ngay_tra'];
-                $_SESSION['ngay_vao']=$ngay_vao;
-                $_SESSION['ngay_tra']=$ngay_tra;
-                $_SESSION['nguoi_lon']=$nguoi_lon;
-                $_SESSION['tre_em']=$tre_em;
+            if (isset($_POST['search'])) {
+                $ngay_vao = $_POST['ngay_vao'];
+                $ngay_tra = $_POST['ngay_tra'];
+                $_SESSION['ngay_vao'] = $ngay_vao;
+                $_SESSION['ngay_tra'] = $ngay_tra;
+                $_SESSION['nguoi_lon'] = $nguoi_lon;
+                $_SESSION['tre_em'] = $tre_em;
             }
             include "view/room-search.php";
             break;
@@ -177,7 +178,8 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             include 'view/booking.php';
             break;
         case 'pay-booking':
-            if (isset($_POST['pay-booking']) && ($_POST['pay-booking'])) {
+            if (isset($_POST['redirect']) && ($_POST['redirect'])) {
+                $code_order = rand(0, 9999);
                 $ngay_dat = date('Y/m/d');
                 $tong_tien = $_POST['tong_tien'];
                 $thanh_toan = $_POST['thanh_toan'];
@@ -186,19 +188,96 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $dien_thoai = $_POST['dien_thoai'];
                 $id_nguoi = $_POST['id_nguoi'];
                 $thanh_tien = $_POST['thanh_tien'];
-                $id_dat = booking_insert($ngay_dat, $tong_tien, $thanh_toan, $ho_ten, $email, $dien_thoai, $id_nguoi);
-                $_SESSION['id_dat'] = $id_dat;
-                if (isset($_SESSION['booking']) && (count($_SESSION['booking']) > 0)) {
-                    foreach ($_SESSION['booking'] as $booking) {
-                        if (isset($_SESSION['user'])) {
+                if ($thanh_toan == 1 || $thanh_toan == 2) {
+                    $id_dat = booking_insert($ngay_dat, $tong_tien, $thanh_toan, $ho_ten, $email, $dien_thoai, $id_nguoi);
+                    $_SESSION['id_dat'] = $id_dat;
+                    if (isset($_SESSION['booking']) && (count($_SESSION['booking']) > 0)) {
+                        foreach ($_SESSION['booking'] as $booking) {
+                            if (isset($_SESSION['user'])) {
+                                bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
+                                room_update_after_booking($booking[0]);
+                            }
                         }
-                        bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
-                        room_update_after_booking($booking[0]);
+                        unset($_SESSION['booking']);
                     }
-                    unset($_SESSION['booking']);
+                    include "view/booking-info.php";
+                } else if ($thanh_toan == 3) {
+                    $vnp_TxnRef = $code_order; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+                    $vnp_OrderInfo = 'Thanh toán hóa đơn';
+                    $vnp_OrderType = 'billpayment';
+                    $vnp_Amount = $tong_tien * 100;
+                    $vnp_Locale = 'VN';
+                    $vnp_BankCode = 'NCB';
+                    $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+                    //Add Params of 2.0.1 Version
+                    $vnp_ExpireDate = $expire;
+
+                    $inputData = array(
+                        "vnp_Version" => "2.1.0",
+                        "vnp_TmnCode" => $vnp_TmnCode,
+                        "vnp_Amount" => $vnp_Amount,
+                        "vnp_Command" => "pay",
+                        "vnp_CreateDate" => date('YmdHis'),
+                        "vnp_CurrCode" => "VND",
+                        "vnp_IpAddr" => $vnp_IpAddr,
+                        "vnp_Locale" => $vnp_Locale,
+                        "vnp_OrderInfo" => $vnp_OrderInfo,
+                        "vnp_OrderType" => $vnp_OrderType,
+                        "vnp_ReturnUrl" => $vnp_Returnurl,
+                        "vnp_TxnRef" => $vnp_TxnRef,
+                        "vnp_ExpireDate" => $vnp_ExpireDate
+                    );
+
+                    if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                        $inputData['vnp_BankCode'] = $vnp_BankCode;
+                    }
+                    // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+                    //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+                    // }
+
+                    //var_dump($inputData);
+                    ksort($inputData);
+                    $query = "";
+                    $i = 0;
+                    $hashdata = "";
+                    foreach ($inputData as $key => $value) {
+                        if ($i == 1) {
+                            $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                        } else {
+                            $hashdata .= urlencode($key) . "=" . urlencode($value);
+                            $i = 1;
+                        }
+                        $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                    }
+
+                    $vnp_Url = $vnp_Url . "?" . $query;
+                    if (isset($vnp_HashSecret)) {
+                        $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+                        $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+                    }
+                    $returnData = array(
+                        'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+                    );
+                    if (isset($_POST['redirect'])) {
+                        $id_dat = booking_insert($ngay_dat, $tong_tien, $thanh_toan, $ho_ten, $email, $dien_thoai, $id_nguoi);
+                        $_SESSION['id_dat'] = $id_dat;
+                        if (isset($_SESSION['booking']) && (count($_SESSION['booking']) > 0)) {
+                            foreach ($_SESSION['booking'] as $booking) {
+                                if (isset($_SESSION['user'])) {
+                                    bookingdetail_insert($booking[6], $booking[7], $booking[8], $booking[9], $booking[4], $booking[3], $thanh_tien, $booking[1], $booking[2], $id_dat, $booking[0]);
+                                    room_update_after_booking($booking[0]);
+                                }
+                            }
+                            unset($_SESSION['booking']);
+                        }
+                        header('Location: ' . $vnp_Url);
+                        die();
+                    } else {
+                        echo json_encode($returnData);
+                    }
                 }
             }
-            include "view/booking-info.php";
+            // include "view/booking-info.php";
             break;
         case 'contact':
             if (isset($_POST['contact']) && ($_POST['contact'])) {
@@ -223,7 +302,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             break;
     }
 } else {
-    
+
     include "view/home.php";
 }
 

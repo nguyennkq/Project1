@@ -40,11 +40,11 @@
                     <td colspan="2" style="text-align: left; padding-left: 100px;">Tổng</td>
                     <td>' . $tong . '</td>
                 </tr>
+                </table>
                 ';
         }
     }
     ?>
-    </table>
     <?php
     if (isset($_SESSION['id_dat']) && ($_SESSION['id_dat'] > 0)) {
         $show_booking = booking_selectall($_SESSION['id_dat']);
@@ -72,6 +72,7 @@
                                                         }
                                                         echo $message;
                                                         ?></span></p>
+
             </div>
     <?php }
     } ?>

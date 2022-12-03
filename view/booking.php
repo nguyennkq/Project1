@@ -99,11 +99,11 @@
         </div>
         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
         <ul>
-            <li><input type="radio" name="thanh_toan" value="1" checked>Thanh toán tiền mặt</li>
+            <li><input type="radio" name="thanh_toan" value="1" >Thanh toán tiền mặt</li>
             <li><input type="radio" name="thanh_toan" value="2">Chuyển khoản ngân hàng</li>
-            <li><input type="radio" name="thanh_toan" value="3">Thanh toán online</li>
+            <li><input type="radio" name="thanh_toan" value="3" checked>Thanh toán VNPAY</li>
         </ul>
-        <input type="submit" value="Đặt phòng" name="pay-booking">
+        <input type="submit" value="Đặt phòng"  name="redirect" id="redirect">
         <input type="reset" value="Nhập lại">
     </form>
 </div>
