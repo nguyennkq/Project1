@@ -12,6 +12,16 @@ include "model/service.php";
 include "model/feedback.php";
 include "model/booking.php";
 include "view/config-vnpay.php";
+
+include "./src/PHPMailer-6.0.5/src/Exception.php";
+include "./src/PHPMailer-6.0.5/src/OAuth.php";
+include "./src/PHPMailer-6.0.5/src/PHPMailer.php";
+include "./src/PHPMailer-6.0.5/src/SMTP.php";
+include "./src/PHPMailer-6.0.5/src/POP3.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $top3 = room_selectall_top3();
 if (!isset($_SESSION['booking'])) $_SESSION['booking'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -73,7 +83,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             if (isset($_POST['login']) && ($_POST['login'])) {
                 $ten = $_POST['ten'];
                 $mat_khau = $_POST['mat_khau'];
-                $checkuser = user_login($ten, $mat_khau);
+                $checkuser = check_user($ten, $mat_khau);
                 // $check_admin = check_usernv($ho_ten, $mat_khau);
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
@@ -90,10 +100,98 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             include 'view/account/login.php';
             break;
         case 'forget':
+            if (isset($_POST['send'])) {
+                $email = $_POST['email'];
+                $checkemail = user_forget($email);
+                // var_dump($checkemail);
+                if ($checkemail != "") {
+                    $id = $checkemail['id_nguoi'];
+                    $passmoi = generateRandomString();
+                    user_update_password($id, $passmoi);
+                    $mail = new PHPMailer(true);
+                    try {
+                        //Server settings
+                        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+                        $mail->isSMTP();                                      // Set mailer to use SMTP
+                        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                        $mail->Username = 'nguyenmanhhieutl@gmail.com';                 // SMTP username
+                        $mail->Password = 'eragdefcbsmyapty';                           // SMTP password
+                        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                        $mail->Port = 587;                                    // TCP port to connect to
+
+                        //Recipients
+                        $mail->setFrom('nguyenmanhhieutl@gmail.com ', 'Mailer');
+                        $mail->addAddress($email, $checkemail['ho_ten']);     // Add a recipient
+                        // $mail->addAddress('vietnqph27022@fpt.edu.vn','việt sếch');               // Name is optional
+                        // $mail->addReplyTo('info@example.com', 'Information');
+                        $mail->addCC('nguyenmanhhieutl@gmail.com');
+                        // $mail->addBCC('bcc@example.com');
+
+                        //Attachments
+                        // $mail->addent('/vAttachmar/tmp/file.tar.gz');         // Add attachments
+                        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                        //Content
+                        $mail->isHTML(true);                                  // Set email format to HTML
+                        $mail->Subject = 'Mật khẩu mới của bạn';
+                        $mail->Body    = 'Đây là mật khẩu mới của bạn,có hiệu lực 5 phút kể từ khi bạn click tìm mật khẩu ' . $passmoi;
+                        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients'; 
+
+                        $mail->send();
+                        $_SESSION['succes_pw'] = 'Mật khẩu mới đã được gửi trong email của bạn.';
+                        // header('location:index.php');
+                    } catch (Exception $e) {
+                        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    }
+                    $err_email = "Gửi mã thành công mời bạn vào email để xem lại mã";
+                } elseif (empty($checkemail)) {
+                    $err_email = "Không được để Trống";
+                } else {
+                    $err_email = "Email này không tồn tại";
+                }
+            }
             include 'view/account/forget.php';
             break;
+        case 'change-password':
+            if (isset($_POST['send'])) {
+                $ten = $_POST['ten'];
+                $mat_khau = $_POST['mat_khau'];
+                $mat_khau_moi = $_POST['mat_khau_moi'];
+                $checkaccount = check_account($ten);
+                if (is_array($checkaccount)) {
+                    $id_nguoi = $checkaccount['id_nguoi'];
+                    if ($checkaccount['mat_khau'] == $mat_khau) {
+                        user_update_password($id_nguoi, $mat_khau_moi);
+                        $message = "Đổi mật khẩu thành công";
+                    } else {
+                        $message = "Mật khẩu cũ không đúng";
+                    }
+                } else {
+                    $message = "Tài khoản này không có";
+                }
+            }
+            include "view/account/change-password.php";
+            break;
+        case 'update-user';
+        if (isset($_POST['update']) && ($_POST['update'])) {
+            $id_nguoi = $_POST['id_nguoi'];
+            $ten = $_POST['ten'];
+            $ho_ten = $_POST['ho_ten'];
+            $dia_chi = $_POST['dia_chi'];
+            $mat_khau = $_POST['mat_khau'];
+            $cmnd = $_POST['cmnd'];
+            $email = $_POST['email'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $vai_tro = $_POST['vai_tro'];
+            user_update($id_nguoi,$ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro);
+            $_SESSION['user'] = check_user($ten, $mat_khau);
+            header('Location: index.php?ctr=update-user');
+            $message = 'Cập nhật thành công';
+        }
+            include 'view/account/update-user.php';
+            break;
         case 'info-user':
-
             include 'view/account/info-user.php';
             break;
         case 'logout':

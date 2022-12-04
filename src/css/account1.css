@@ -58,6 +58,16 @@
     padding: 16px 8px;
     margin: 16px 0;
 }
+
+
+.form-forget input[type="submit"] {
+    background-color: #F4694C;
+}
+
+.form-forget input[type="submit"]:hover{
+    background-color: rgb(40, 117, 40);
+}
+
 hr{
     height: 3px;
     background-color: #F4694C;
@@ -167,4 +177,36 @@ hr{
 }
 .box-user span {
     color: #F4694C;
+}
+
+.form-change-password{
+    margin: 160px auto 16px;
+    width: 350px;
+}
+
+.form-change-password input {
+    width: 100%;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 8px;
+    padding: 16px 8px;
+    margin: 16px 0;
+}
+
+
+.form-change-password input[type="submit"] {
+    background-color: #F4694C;
+    color: #fff;
+    width: 100px;
+}
+
+.form-change-password input[type="submit"]:hover{
+    background-color: rgb(40, 117, 40);
+}
+
+.form-change-password input[type="reset"] {
+    width: 100px;
+    padding: 16px 8px;
+    border: none;
+
 }
