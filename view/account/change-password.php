@@ -1,19 +1,7 @@
-<form action="index.php?ctr=change-password" method="POST" class="form-change-password">
-    Tên đăng nhập
-    <br>
-    <input type="text" name="ten" required>
-    <br>
-    Mật khẩu cũ<br>
-    <input type="text" name="mat_khau"><br>
-    Mật khẩu mới<br>
-    <input type="text" name="mat_khau_moi"><br>
-    <input type="submit" value="Gửi" name="send">
-    <input type="reset" value="Nhập lại">
+<hr>
+
+<form action="index.php?ctr=change-password" class="form-change-password" method="POST">
+    <input type="text" class="" name="mk_cu" id="" placeholder="<?php if(isset($err)){echo $err;}elseif(isset($err_pass)){echo $err_pass;}else{echo 'Nhập mật khẩu cũ';} ?>">
+    <input type="text" name="mk_moi" placeholder="<?php if(isset($pass_moi)){echo $pass_moi;}else{echo "Nhập mật khẩu mới";} ?>" id="">
+    <input type="submit" class="login" name="xacnhan" value="Xác nhận">
 </form>
-<h3 style="color:red;text-align:center;">
-    <?php
-    if (isset($message) && ($message != "")) {
-        echo $message;
-    }
-    ?>
-</h3>

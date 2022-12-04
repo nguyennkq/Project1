@@ -30,72 +30,87 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
         case 'register':
             if (isset($_POST['btn'])) {
                 $flag = true;
-                $ten = $_POST['ten'];
-                $ho_ten = $_POST['ho_ten'];
-                $dia_chi = $_POST['dia_chi'];
-                $mat_khau = $_POST['mat_khau'];
-                $so_dien_thoai = $_POST['so_dien_thoai'];
-                $cmnd = $_POST['cmnd'];
+                $ten = $_POST['username'];
+                $ho_ten = $_POST['name'];
+                $dia_chi = $_POST['address'];
+                $mat_khau = $_POST['password'];
+                $pass_word = $_POST['pass'];
+                $so_dien_thoai = $_POST['sdt'];
+                $cmnd = $_POST['cmt'];
                 $email = $_POST['email'];
-                $vai_tro = $_POST['vai_tro'];
+                $vai_tro = 1;
 
                 if (empty($ten)) {
-                    $err_ten = "không được để trống";
+                    $err_name = "không được để chống";
                     $flag = false;
                 }
 
                 if (empty($ho_ten)) {
-                    $err_ho_ten = "không được để trống";
+                    $user_name = "không được để chống";
                     $flag = false;
                 }
 
                 if (empty($dia_chi)) {
-                    $err_dia_chi = "không được để trống";
-                    $flag = false;
-                }
-                if (empty($mat_khau)) {
-                    $err_mat_khau = "không được để trống";
+                    $dia_chi = "không được để chống";
                     $flag = false;
                 }
 
+                if (empty($mat_khau)) {
+                    $pass = "không được để chống";
+                    $flag = false;
+                }
+                if (empty($pass_word)) {
+                    $pass1 = "không được để trống";
+                    $flag = false;
+                }
+                elseif($_POST['pass']!=$_POST['password']){
+                    $pass2 = "Mật Khẩu không khớp";
+                    $flag = false;
+                }
+                
                 if (empty($so_dien_thoai)) {
-                    $err_so_dien_thoai = "không được để trống";
+                    $phone = "không được để chống";
                     $flag = false;
                 }
 
                 if (empty($cmnd)) {
-                    $err_cmnd = "không được để trống";
+                    $cmt = "không được để chống";
                     $flag = false;
                 }
 
                 if (empty($email)) {
-                    $err_email = "không được để trống";
+                    $Email = "không được để chống";
                     $flag = false;
                 }
 
                 if ($flag == true) {
-                    user_insert($ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
+                    user_insert($ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro);
+                    $thanhcong = "Đăng ký thành công";
                 }
             }
             include 'view/account/register.php';
             break;
         case 'login':
-            if (isset($_POST['login']) && ($_POST['login'])) {
-                $ten = $_POST['ten'];
-                $mat_khau = $_POST['mat_khau'];
-                $checkuser = check_user($ten, $mat_khau);
-                // $check_admin = check_usernv($ho_ten, $mat_khau);
-                if (is_array($checkuser)) {
-                    $_SESSION['user'] = $checkuser;
-                    extract($_SESSION['user']);
-                    if ($vai_tro == 1) {
-                        header("Location: index.php");
-                    } else if ($vai_tro == 0) {
-                        header("Location: admin/index.php");
-                    }
-                } else {
-                    $message = "Tài khoản không tồn tại, vui lòng đăng kí";
+            if(isset($_POST['btn-dn'])&&$_POST['btn-dn']){
+                // $flag = true;
+                // $checkrole = checkrole($checkrole);
+                $email = $_POST['email'];
+                $password = $_POST['pass'];
+                $ktra = $_POST['email']&&$_POST['pass'];
+                $checkuser = check_user($email,$password);
+                if(is_array($checkuser)){
+                    $_SESSION['nguoi_dung']=$checkuser;
+                    extract($_SESSION['nguoi_dung']);
+                    header("location: index.php");
+                    // echo "thanhcong";
+                }elseif(empty($ktra)){
+                    $tb = "Bạn phải nhập đủ yêu cầu";
                 }
+                else{
+                    // echo "thatbai";
+                    $tb = "Tài khoản không tồn tại";
+                }
+               
             }
             include 'view/account/login.php';
             break;
@@ -154,24 +169,32 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             include 'view/account/forget.php';
             break;
         case 'change-password':
-            if (isset($_POST['send'])) {
-                $ten = $_POST['ten'];
-                $mat_khau = $_POST['mat_khau'];
-                $mat_khau_moi = $_POST['mat_khau_moi'];
-                $checkaccount = check_account($ten);
-                if (is_array($checkaccount)) {
-                    $id_nguoi = $checkaccount['id_nguoi'];
-                    if ($checkaccount['mat_khau'] == $mat_khau) {
-                        user_update_password($id_nguoi, $mat_khau_moi);
-                        $message = "Đổi mật khẩu thành công";
-                    } else {
-                        $message = "Mật khẩu cũ không đúng";
-                    }
-                } else {
-                    $message = "Tài khoản này không có";
+            if(isset($_POST['xacnhan'])&&$_POST['xacnhan']){
+                $flag = true;
+                $passcu = $_POST['mk_cu'];
+                $passnew = $_POST['mk_moi'];
+                if(empty($passcu)){
+                    $err = "Không được để chống";
+                    $flag = false;
+                }
+
+                if(empty($passnew)){
+                    $err = "Không được để trống";
+                    $flag = false;
+                }
+
+                if($_POST['mk_cu']!=$_SESSION['nguoi_dung']['mat_khau']){
+                    $err_pass = "Mật khẩu cũ không chính xác";
+                    $flag = false;
+                }
+
+                if($flag==true){
+                    $id = $_SESSION['nguoi_dung']['id_nguoi'];
+                    user_update_password($id,$passnew);
+                    echo "Đổi mk thành công";
                 }
             }
-            include "view/account/change-password.php";
+            include 'view/account/change-password.php';
             break;
         case 'update-user';
         if (isset($_POST['update']) && ($_POST['update'])) {
@@ -179,7 +202,6 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $ten = $_POST['ten'];
             $ho_ten = $_POST['ho_ten'];
             $dia_chi = $_POST['dia_chi'];
-            $mat_khau = $_POST['mat_khau'];
             $cmnd = $_POST['cmnd'];
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];

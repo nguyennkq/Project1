@@ -23,10 +23,6 @@
         <input type="text" name="dia_chi"  value="<?=$dia_chi?>">
     </div>
     <div class="form-control">
-        <label for="">Mật khẩu</label>
-        <input type="text" name="mat_khau" value="<?=$mat_khau?>">
-    </div>
-    <div class="form-control">
         <label for="">CMND/CCCD</label>
         <input type="text" name="cmnd" value="<?=$cmnd?>">
     </div>

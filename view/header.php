@@ -40,37 +40,26 @@
                     </ul>
                 </div>
                 <div class="account">
-
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                        extract($_SESSION['user']);
-                        if ($vai_tro == 1) {
-                            echo
-                            '
-                            <div>
-                            <a class="info-user" href="index.php?ctr=info-user"><i class="fa-solid fa-user"></i></a>
-                            Xin chào: <span style="color: #F4694C;">' . $ho_ten . '</span>
+                <?php
+                        if (isset($_SESSION['nguoi_dung'])) { 
+                            // var_dump($_SESSION['nguoi_dung']);
+                        // extract($_SESSION['nguoi_dung']);
+                            if($_SESSION['nguoi_dung']['vai_tro']==0){
+                    ?>
+                        <span><?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
+                        <a href="admin/index.php">Vào trang admin</a>
+                        <!-- <a href="index.php?ctr=doimk">Đổi mật khẩu</a>  
+                        <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a> -->
+                        <?php } ?>
+                            <span><?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
+                            <a href="index.php?ctr=doimk">Đổi mật khẩu</a>  
                             <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
-                        </div>
-                            ';
-                        } else {
-                            echo
-                            '
-                            <a href="index.php?ctr=register">Đăng ký</a>
-                            <span>|</span>
-                            <a href="index.php?ctr=login">Đăng nhập</a>
-                            ';
-                        }
-                    ?>
-
-
-                    <?php
-                    } else {
-                    ?>
-                        <a href="index.php?ctr=register">Đăng ký</a>
-                        <span>|</span>
-                        <a href="index.php?ctr=login">Đăng nhập</a>
-                    <?php } ?>
+                        <?php  ?>
+                    <?php }else{ ?>
+                    <a href="index.php?ctr=register">Đăng ký</a>
+                    <span>|</span>
+                    <a href="index.php?ctr=login">Đăng nhập</a>
+                    <?php }?>
                 </div>
                 <a style="font-size: 20px; color: #F4694C" href="index.php?ctr=view-booking"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
