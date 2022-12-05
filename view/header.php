@@ -42,8 +42,6 @@
                 <div class="account">
                     <?php
 
-// var_dump($_SESSION['nguoi_dung']);
-// extract($_SESSION['nguoi_dung']);
                     if (isset($_SESSION['user'])) {
                         if ($_SESSION['user']['vai_tro'] == 0) {
                     ?>

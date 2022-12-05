@@ -1,6 +1,4 @@
 <hr>
-<form class="form-register" action="index.php?ctr=register"method="post">
-<hr>
 <form class="form-register" method="POST" action="">
     <input type="hidden" name="id_nguoi">
     <input type="text" name="username" placeholder="<?php echo isset($err_name)? $err_name : 'Tên người dùng' ?>">
@@ -14,5 +12,4 @@
     <input value="1" name="vai_tro" type="hidden">
     <button type="submit" class="login" name="btn">Đăng ký</button>
     <span><?php if(isset($thanhcong)){echo $thanhcong;} ?></span>
-</form>
 </form>

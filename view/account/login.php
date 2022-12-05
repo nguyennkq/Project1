@@ -1,5 +1,4 @@
 <hr>
-
 <form class="form-login" method="POST" action="index.php?ctr=login">
     <input type="text" placeholder="<?php echo isset($tb) ? $tb : 'ten' ?>" name="ten">
     <input type="text" placeholder="<?php echo isset($tb) ? $tb : 'Pass' ?>" name="pass">

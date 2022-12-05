@@ -1,4 +1,5 @@
-<form class="form-change-password" action="index.php?ctr=change-password" method="POST">
+<hr>
+<form action="index.php?ctr=change-password" class="form-change-password" method="POST">
     <input type="text" class="" name="mk_cu" id="" placeholder="<?php if(isset($err)){echo $err;}elseif(isset($err_pass)){echo $err_pass;}else{echo 'Nhập mật khẩu cũ';} ?>">
     <input type="text" name="mk_moi" placeholder="<?php if(isset($pass_moi)){echo $pass_moi;}else{echo "Nhập mật khẩu mới";} ?>" id="">
     <input type="submit" class="login" name="xacnhan" value="Xác nhận">
