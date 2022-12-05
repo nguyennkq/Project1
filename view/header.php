@@ -46,15 +46,15 @@
                         // extract($_SESSION['nguoi_dung']);
                             if($_SESSION['nguoi_dung']['vai_tro']==0){
                     ?>
-                        <span><?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
+                        <span>Xin chào:<?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
                         <a href="admin/index.php">Vào trang admin</a>
-                        <!-- <a href="index.php?ctr=doimk">Đổi mật khẩu</a>  
-                        <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a> -->
-                        <?php } ?>
-                            <span><?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
-                            <a href="index.php?ctr=doimk">Đổi mật khẩu</a>  
+                        <a href="index.php?ctr=change-password">Đổi mật khẩu</a>  
+                        <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <?php }else{ ?>
+                            <span>Xin chào:<?php echo $_SESSION['nguoi_dung']['ten']; ?></span>
+                            <a href="index.php?ctr=change-password">Đổi mật khẩu</a>  
                             <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
-                        <?php  ?>
+                        <?php } ?>
                     <?php }else{ ?>
                     <a href="index.php?ctr=register">Đăng ký</a>
                     <span>|</span>
