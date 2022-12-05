@@ -23,6 +23,8 @@ load dữ liệu từ bảng giảm giá
 if() xem có trùng không
 nếu trung thì 
 tính toán theo phần trăm
+TeRF(p)L6aK8CARp
+nBdNOhVEx]Rzy_A8
 
 
 

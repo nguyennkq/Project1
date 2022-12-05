@@ -40,33 +40,22 @@
                     </ul>
                 </div>
                 <div class="account">
-
                     <?php
+
+// var_dump($_SESSION['nguoi_dung']);
+// extract($_SESSION['nguoi_dung']);
                     if (isset($_SESSION['user'])) {
-                        extract($_SESSION['user']);
-                        if ($vai_tro == 1) {
-                            echo
-                            '
-                            <div>
-                            <a class="info-user" href="index.php?ctr=info-user"><i class="fa-solid fa-user"></i></a>
-                            Xin chào: <span style="color: #F4694C;">' . $ho_ten . '</span>
+                        if ($_SESSION['user']['vai_tro'] == 0) {
+                    ?>
+                            <a href="admin/index.php">Vào trang admin</a>
+                            <a href="index.php?ctr=change-password">Đổi mật khẩu</a>
                             <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
-                        </div>
-                            ';
-                        } else {
-                            echo
-                            '
-                            <a href="index.php?ctr=register">Đăng ký</a>
-                            <span>|</span>
-                            <a href="index.php?ctr=login">Đăng nhập</a>
-                            ';
-                        }
-                    ?>
-
-
-                    <?php
-                    } else {
-                    ?>
+                        <?php } else { ?>
+                            <a class="info-user" href="index.php?ctr=info-user"><i class="fa-solid fa-user"></i></a>
+                            <span>Xin chào:<?php echo $_SESSION['user']['ten']; ?></span>
+                            <a class="logout" href="index.php?ctr=logout"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <?php } ?>
+                    <?php } else { ?>
                         <a href="index.php?ctr=register">Đăng ký</a>
                         <span>|</span>
                         <a href="index.php?ctr=login">Đăng nhập</a>

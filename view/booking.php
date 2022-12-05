@@ -64,12 +64,10 @@
         ?>
     </table>
 
-    <?php
-
-    ?>
+   
     <form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
         <input type="hidden" name="id_nguoi" value="<?php
-                                                    if (isset($_SESSION['user'])) echo $id_nguoi;
+                                                    if (isset($_SESSION['user'])) echo $_SESSION['user']['id_nguoi'];
                                                     ?>">
         <input type="hidden" name="tong_tien" value="<?= $tong ?>">
         <input type="hidden" name="thanh_tien" value="<?= $ttien ?>">
@@ -78,22 +76,23 @@
         </h1>
         <div class="box-content">
             <div>
+              
                 <label>Họ và Tên</label><br>
                 <input type="text" name="ho_ten" value="<?php
-                                                        if (isset($_SESSION['user'])) echo $ho_ten;
+                                                        if (isset($_SESSION['user'])) echo $_SESSION['user']['ho_ten'];
 
                                                         ?>">
             </div>
             <div>
                 <label>Email</label><br>
                 <input type="text" name="email" value="<?php
-                                                        if (isset($_SESSION['user'])) echo $email;;
+                                                        if (isset($_SESSION['user'])) echo $_SESSION['user']['email'];
                                                         ?>">
             </div>
             <div>
                 <label>Điện thoại</label><br>
                 <input type="text" name="dien_thoai" value="<?php
-                                                            if (isset($_SESSION['user'])) echo $so_dien_thoai;
+                                                            if (isset($_SESSION['user'])) echo $_SESSION['user']['so_dien_thoai'];
                                                             ?>">
             </div>
         </div>
