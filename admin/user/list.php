@@ -29,7 +29,7 @@
                 <td><?= $vai_tro == 1 ? 'Thành viên' : 'Admin' ?></td>
                 <td>
                     <a href="index.php?ctr=getupdate-user&id_nguoi=<?= $id_nguoi ?>"><input type="button" value="Sửa"></a>
-                    <a href="index.php?ctr=getdelete-user&id_nguoi=<?= $id_nguoi ?>"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="index.php?ctr=getdelete-user&id_nguoi=<?= $id_nguoi ?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

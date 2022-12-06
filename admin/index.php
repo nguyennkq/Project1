@@ -134,7 +134,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 } else {
                     $dien_tich = $_POST['dien_tich'];
                 }
-              
+
                 if (empty($error)) {
                     room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $luot_xem, $id_loai);
                     $message = "Thêm thành công";
@@ -191,10 +191,16 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_thu_vien"]["name"]);
                 if (move_uploaded_file($_FILES["anh_thu_vien"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                if (empty($anh_thu_vien)) {
+                    $error['anh_thu_vien'] = "Vui lòng chọn ảnh";
+                } else {
+                    $anh_thu_vien = $_FILES['anh_thu_vien']['name'];
+                }
+                if (empty($error)) {
                     gallery_insert($anh_thu_vien, $id_phong);
                     $message = "Thêm thành công";
-                } else {
-                    $message = "Không thêm được";
                 }
             }
             $list_room = room_selectall();
@@ -242,12 +248,53 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $email = $_POST['email'];
                 $so_dien_thoai = $_POST['so_dien_thoai'];
                 $vai_tro = $_POST['vai_tro'];
-                if (!empty($so_dien_thoai)) {
+               
+                // Validate
+                if (empty($ten)) {
+                    $error['ten'] = "Không được để trống";
+                } else {
+                    $ten = $_POST['ten'];
+                }
+
+                if (empty($ho_ten)) {
+                    $error['ho_ten'] = "Không được để trống";
+                } else {
+                    $ho_ten = $_POST['ho_ten'];
+                }
+
+                if (empty($dia_chi)) {
+                    $error['dia_chi'] = "Không được để trống";
+                } else {
+                    $dia_chi = $_POST['dia_chi'];
+                }
+                if (empty($mat_khau)) {
+                    $error['mat_khau'] = "Không được để trống";
+                } else {
+                    $mat_khau = $_POST['mat_khau'];
+                }
+
+                if (empty($cmnd)) {
+                    $error['cmnd'] = "Không được để trống";
+                } else {
+                    $cmnd = $_POST['cmnd'];
+                }
+
+                if (empty($email)) {
+                    $error['email'] = "Không được để trống";
+                } else {
+                    $email = $_POST['email'];
+                }
+                if (empty($so_dien_thoai)) {
+                    $error['so_dien_thoai'] = "Không được để trống";
+                } else {
+                    $so_dien_thoai = $_POST['so_dien_thoai'];
+                }
+
+                if(empty($error)){
                     user_insert($ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
                     $message = "Thêm thành công";
-                } else {
-                    $message = "Không thêm được";
                 }
+
             }
             include "user/add.php";
             break;
@@ -293,10 +340,21 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
                 if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                if (empty($ten_dich_vu)) {
+                    $error['ten_dich_vu'] = "Không được để trống";
+                } else {
+                    $ten_dich_vu = $_POST['ten_dich_vu'];
+                }
+                if (empty($hinh_anh)) {
+                    $error['hinh_anh'] = "Vui lòng chọn ảnh";
+                } else {
+                    $hinh_anh = $_FILES['hinh_anh']["name"];
+                }
+                if (empty($error)) {
                     service_insert($ten_dich_vu, $id_phong, $hinh_anh);
                     $message = "Thêm thành công";
-                } else {
-                    $message = "Không thêm được";
                 }
             }
             $list_room = room_selectall();

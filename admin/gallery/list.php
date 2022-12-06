@@ -23,7 +23,7 @@
                 <td><?= $id_phong ?></td>
                 <td>
                     <a href="index.php?ctr=getupdate-gallery&id_thu_vien=<?=$id_thu_vien?>"><input type="button" value="Sửa"></a>
-                    <a href="index.php?ctr=getdelete-gallery&id_thu_vien=<?=$id_thu_vien?>"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="index.php?ctr=getdelete-gallery&id_thu_vien=<?=$id_thu_vien?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

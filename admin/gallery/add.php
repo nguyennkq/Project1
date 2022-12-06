@@ -19,6 +19,7 @@
     <div class="form-control">
         <label for="">Ảnh thư viện</label>
         <input type="file" name="anh_thu_vien">
+        <p style="color: red;"><?php if (isset($error["anh_thu_vien"])) echo $error["anh_thu_vien"] ?></p>
     </div>
     <input type="submit" value="Thêm mới" name="add">
     <input type="reset" value="Nhập lại">

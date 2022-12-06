@@ -20,7 +20,7 @@
                 <td><?= $dia_chi ?></td>
                 <td><?= $noi_dung ?></td>
                 <td>
-                    <a href="index.php?ctr=getdelete-contact&id_lien_he=<?= $id_lien_he ?>"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="index.php?ctr=getdelete-contact&id_lien_he=<?= $id_lien_he ?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

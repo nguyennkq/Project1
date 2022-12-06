@@ -39,7 +39,7 @@
                 <td><?= $luot_xem ?></td>
                 <td>
                     <a href="index.php?ctr=getupdate-room&id_phong=<?= $id_phong ?>"><input type="button" value="Sửa"></a>
-                    <a href="index.php?ctr=getdelete-room&id_phong=<?= $id_phong ?>"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="index.php?ctr=getdelete-room&id_phong=<?= $id_phong ?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

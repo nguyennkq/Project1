@@ -26,7 +26,7 @@
                 <td><?= $hinh_anh ?></td>
                 <td>
                     <a href="index.php?ctr=getupdate-service&id_dich_vu=<?=$id_dich_vu?>"><input type="button" value="Sửa"></a>
-                    <a href="index.php?ctr=getdelete-service&id_dich_vu=<?=$id_dich_vu?>"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="index.php?ctr=getdelete-service&id_dich_vu=<?=$id_dich_vu?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

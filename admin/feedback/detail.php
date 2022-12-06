@@ -12,16 +12,16 @@
     foreach ($items as $item) {
         extract($item);
         $xoa = "index.php?ctr=getdelete-feedback&id_phan_hoi=" . $id_phan_hoi . "&id_phong=" . $id_phong;
-        echo '
+        ?>
             <tr>
-                <td>' . $binh_luan . '</td>
-                <td>' . $thoi_diem . '</td>
-                <td>' . $ho_ten . '</td>
+                <td><?=$binh_luan?></td>
+                <td><?=$thoi_diem?></td>
+                <td><?=$ho_ten?></td>
                 <td>
-                    <a href="' . $xoa . '"><input type="button" value="Xóa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="<?=$xoa?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
-            ';
-    }
-    ?>
+   <?php
+   
+   }?>
 </table>

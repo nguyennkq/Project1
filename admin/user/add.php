@@ -9,31 +9,38 @@ if (isset($message) && ($message != "")) echo '<h3 id="message">' . $message . '
     </div>
     <div class="form-control">
         <label for="">Tên người dùng</label>
-        <input type="text" name="ten" placeholder="Tên người dùng">
+        <input type="text" name="ten" placeholder="Tên người dùng"  value="<?php if (isset($ten)) echo $ten ?>">
+        <p style="color: red;"><?php if (isset($error["ten"])) echo $error["ten"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Họ tên</label>
-        <input type="text" name="ho_ten" placeholder="Họ tên">
+        <input type="text" name="ho_ten" placeholder="Họ tên"  value="<?php if (isset($ho_ten)) echo $ho_ten ?>">
+        <p style="color: red;"><?php if (isset($error["ho_ten"])) echo $error["ho_ten"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Địa chỉ</label>
-        <input type="text" name="dia_chi" placeholder="Địa chỉ">
+        <input type="text" name="dia_chi" placeholder="Địa chỉ" value="<?php if (isset($dia_chi)) echo $dia_chi ?>">
+        <p style="color: red;"><?php if (isset($error["dia_chi"])) echo $error["dia_chi"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Mật khẩu</label>
-        <input type="text" name="mat_khau" placeholder="Mật khẩu">
+        <input type="text" name="mat_khau" placeholder="Mật khẩu" value="<?php if (isset($mat_khau)) echo $mat_khau ?>">
+        <p style="color: red;"><?php if (isset($error["mat_khau"])) echo $error["mat_khau"] ?></p>
     </div>
     <div class="form-control">
         <label for="">CMND/CCCD</label>
-        <input type="text" name="cmnd" placeholder="Số CMND/CCCD">
+        <input type="text" name="cmnd" placeholder="Số CMND/CCCD" value="<?php if (isset($cmnd)) echo $cmnd ?>">
+        <p style="color: red;"><?php if (isset($error["cmnd"])) echo $error["cmnd"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Email</label>
-        <input type="text" name="email" placeholder="email">
+        <input type="text" name="email" placeholder="email" value="<?php if (isset($email)) echo $email ?>">
+        <p style="color: red;"><?php if (isset($error["email"])) echo $error["email"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Số điện thoại</label><br>
-        <input type="text" name="so_dien_thoai" placeholder="Số điện thoại">
+        <input type="text" name="so_dien_thoai" placeholder="Số điện thoại" value="<?php if (isset($so_dien_thoai)) echo $so_dien_thoai ?>"> 
+        <p style="color: red;"><?php if (isset($error["so_dien_thoai"])) echo $error["so_dien_thoai"] ?></p>
     </div>
     <div class="form-control">
         <label for="">Vai trò</label><br>
