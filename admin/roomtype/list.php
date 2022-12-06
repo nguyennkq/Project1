@@ -18,18 +18,19 @@
             } else {
                 $anh_loai = "";
             }
-            echo '
-                <tr>
-                    <td>' . $id_loai . '</td>
-                    <td>' . $ten_loai . '</td>
-                    <td>' . $anh_loai . '</td>
-                    <td>
-                        <a href="' . $update . '"><input type="button" value="Sửa"></a>
-                        <a href="' . $delete . '"><input type="button" value="Xóa"></a>
-                    </td>            
-                </tr>';
-        }
+        ?>
 
+            <tr>
+                <td><?= $id_loai ?></td>
+                <td><?= $ten_loai ?></td>
+                <td><?= $anh_loai ?></td>
+                <td>
+                    <a href="<?= $update ?>"><input type="button" value="Sửa"></a>
+                    <a onclick="if(!confirm('Bạn có muốn xóa?')){return false}" href="<?= $delete ?>"><input type="button" value="Xóa"></a>
+                </td>
+            </tr>
+        <?php
+        }
         ?>
     </tbody>
 </table>

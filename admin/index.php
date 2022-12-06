@@ -13,8 +13,7 @@ include "../model/booking.php";
 include "../model/stastis.php";
 include "../model/feedback.php";
 
-
-
+$error = array();
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
@@ -29,11 +28,24 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $anh_loai = $_FILES['anh_loai']['name'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_loai"]["name"]);
+                //Validate
+                if (empty($ten_loai)) {
+                    $error['ten_loai'] = "Không được để trống tên loại";
+                } else {
+                    $ten_loai = $_POST['ten_loai'];
+                }
+                if (empty($anh_loai)) {
+                    $error['anh_loai'] = "Vui lòng chọn ảnh";
+                } else {
+                    $anh_loai = $_FILES['anh_loai']['name'];
+                }
                 if (move_uploaded_file($_FILES["anh_loai"]["tmp_name"], $target_file)) {
+                } else {
+                }
+
+                if (empty($error)) {
                     roomtype_insert($ten_loai, $anh_loai);
                     $message = "Thêm thành công";
-                } else {
-                    $message = "Không thêm được";
                 }
             }
             include "roomtype/add.php";
@@ -84,10 +96,48 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anh_phong"]["name"]);
                 if (move_uploaded_file($_FILES["anh_phong"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                // Validate
+                if (empty($ten_phong)) {
+                    $error['ten_phong'] = "Không được để trống";
+                } else {
+                    $ten_phong = $_POST['ten_phong'];
+                }
+                if (empty($gia_phong)) {
+                    $error['gia_phong'] = "Không được để trống";
+                } else {
+                    $gia_phong = $_POST['gia_phong'];
+                }
+                if (empty($mo_ta)) {
+                    $error['mo_ta'] = "Không được để trống";
+                } else {
+                    $mo_ta = $_POST['mo_ta'];
+                }
+                if (empty($anh_phong)) {
+                    $error['anh_phong'] = "Vui lòng chọn ảnh";
+                } else {
+                    $anh_phong = $_FILES['anh_phong']['name'];
+                }
+                if (empty($nguoi_lon_max)) {
+                    $error['nguoi_lon_max'] = "Không được để trống";
+                } else {
+                    $nguoi_lon_max = $_POST['nguoi_lon_max'];
+                }
+                if (empty($tre_em_max)) {
+                    $error['tre_em_max'] = "Không được để trống";
+                } else {
+                    $tre_em_max = $_POST['tre_em_max'];
+                }
+                if (empty($dien_tich)) {
+                    $error['dien_tich'] = "Không được để trống";
+                } else {
+                    $dien_tich = $_POST['dien_tich'];
+                }
+              
+                if (empty($error)) {
                     room_insert($ten_phong, $gia_phong, $mo_ta, $anh_phong, $nguoi_lon_max, $tre_em_max, $trang_thai, $dien_tich, $luot_xem, $id_loai);
                     $message = "Thêm thành công";
-                } else {
-                    $message = "Không thêm được";
                 }
             }
             $list_roomtype = roomtype_selectall();

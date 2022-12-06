@@ -1,6 +1,5 @@
 <?php
 
-// require_once 'pdo.php';
     function room_selectall(){
         $sql="SELECT * FROM phong";
         return pdo_query($sql);
@@ -8,9 +7,7 @@
 
     function room_selectallbyid($id_loai){
         $sql = "SELECT * from phong where 1";
-        // if ($keyw != "") {
-        //     $sql .= " and ten_hh like '%" . $keyw . "%'";
-        // }
+       
         if ($id_loai > 0) {
             $sql .= " and id_loai = '" . $id_loai . "'";
         }
@@ -27,7 +24,7 @@
     // $nguoi_lon<=nguoi_lon_max AND $tre_em<=tre_em_max
 
     function room_insert($ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai){
-        $sql="INSERT INTO phong(ten_phong,gia_phong,mo_ta,anh_phong,nguoi_lon_max,tre_em_max,trang_thai,dien_tich,id_loai) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO phong(ten_phong,gia_phong,mo_ta,anh_phong,nguoi_lon_max,tre_em_max,trang_thai,dien_tich,luot_xem,id_loai) VALUES (?,?,?,?,?,?,?,?,?,?)";
         pdo_execute($sql,$ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai);
     }
 
