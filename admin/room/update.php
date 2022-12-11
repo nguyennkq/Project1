@@ -50,7 +50,7 @@ if (is_file($anhpath)) {
     </div>
     <div class="form-control">
         <label for="">Diện tích</label>
-        <input type="text" name="luot_xem" value="<?= $luot_xem ?>" disabled>
+        <input type="text" name="luot_xem" value="<?= $luot_xem ?>" readonly>
     </div>
     <div class="form-control">
         <label for="">Trạng thái</label><br>

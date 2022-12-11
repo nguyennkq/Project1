@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/index1.css">
     <link rel="stylesheet" href="./src/css/contact1.css">
-    <link rel="stylesheet" href="./src/css/service.css">
+    <link rel="stylesheet" href="./src/css/service1.css">
     <link rel="stylesheet" href="./src/css/roomtype.css">
     <link rel="stylesheet" href="./src/css/account1.css">
-    <link rel="stylesheet" href="./src/css/bookingdetail.css">
-    <link rel="stylesheet" href="./src/css/aside.css">
+    <link rel="stylesheet" href="./src/css/bookingdetail1.css">
+    <link rel="stylesheet" href="./src/css/aside1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
@@ -26,14 +26,28 @@
     <div class="box-container">
         <header>
             <div class="nav">
-                <div class="logo">
-                    <a href="index.php"><img src="./img/logo1.jpg" alt=""></a>
-                </div>
+                <?php
+                foreach ($list_setting as $setting) {
+                    extract($setting);
+                    $anhpath = "upload/" . $logo;
+                    if (is_file($anhpath)) {
+                        $logo = "<img src='" . $anhpath . "' width='100px' height='100px'>";
+                    } else {
+                        $logo = "";
+                    }
+                ?>
+
+                    <div class="logo">
+                        <a href="index.php"><?= $logo ?></a>
+                    </div>
+                <?php
+                }
+                ?>
                 <div class="menu">
                     <ul id="nav">
                         <li><a href="index.php">Trang chủ</a></li>
                         <li><a href="index.php?ctr=roomtype">Loại phòng</a></li>
-                        <li><a href="index.php?ctr=blog">Blog</a></li>
+                        <!-- <li><a href="index.php?ctr=blog">Blog</a></li> -->
                         <li><a href="index.php?ctr=gallery">Thư viện</a></li>
                         <li><a href="index.php?ctr=service">Dịch vụ</a></li>
                         <li><a href="index.php?ctr=contact">Liên hệ</a></li>
@@ -41,7 +55,6 @@
                 </div>
                 <div class="account">
                     <?php
-
                     if (isset($_SESSION['user'])) {
                         if ($_SESSION['user']['vai_tro'] == 0) {
                     ?>

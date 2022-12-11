@@ -42,9 +42,9 @@ function user_insert($ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai
 }
 
 //Cập nhật người dùng
-function user_update($ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro){
+function user_update($id_nguoi,$ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro){
     $sql = "UPDATE nguoi_dung SET ten = ?, ho_ten = ?, dia_chi = ?, mat_khau = ?, cmnd = ?, email = ?, so_dien_thoai = ?, vai_tro = ? WHERE id_nguoi = ?";
-    pdo_execute($sql,$ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro);
+    pdo_execute($sql,$ten,$ho_ten,$dia_chi,$mat_khau,$cmnd,$email,$so_dien_thoai,$vai_tro==1,$id_nguoi);
 }
 
 function user_update_password($id,$mat_khau){

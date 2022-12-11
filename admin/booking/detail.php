@@ -1,7 +1,7 @@
 <h1>Chi tiết đặt phòng</h1>
 <table>
     <thead>
-        <th>Id đặt</th>
+        <th>Id chi tiết</th>
         <th>Tên phòng</th>
         <th>Ngày vào</th>
         <th>Ngày trả</th>
@@ -14,10 +14,10 @@
         <?php
         foreach ($detail_booking as $booking) {
             extract($booking);
-            $xoa = "index.php?ctr=getdelete-booking&id=" . $id_chi_tiet;
+            $xoa = "index.php?ctr=getdelete-bookingdetail&id_chi_tiet=" . $id_chi_tiet."&id_dat=" . $id_dat;
         ?>
             <tr>
-                <td><?= $id_dat ?></td>
+                <td><?= $id_chi_tiet ?></td>
                 <td><?= $ten_phong ?></td>
                 <td><?= $ngay_vao ?></td>
                 <td><?= $ngay_tra ?></td>
@@ -25,7 +25,7 @@
                 <td><?= $tre_em ?></td>
                 <td><?= $thanh_tien ?></td>
                 <td>
-                    <a href="index.php?ctr=getdelete-booking&id=<?=$id_chi_tiet?>"><input type="button" value="Xóa"></a>
+                    <a href="<?=$xoa?>"><input type="button" value="Xóa"></a>
                 </td>
             </tr>
         <?php

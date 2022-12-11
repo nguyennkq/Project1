@@ -1,5 +1,4 @@
 <div class="box-dashboard">
-
     <?php
     foreach ($room_count as $room) {
         extract($room);

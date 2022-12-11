@@ -21,7 +21,6 @@
         $sql.=" AND '".$tre_em."'<= tre_em_max";
         return pdo_query($sql);
     }
-    // $nguoi_lon<=nguoi_lon_max AND $tre_em<=tre_em_max
 
     function room_insert($ten_phong,$gia_phong,$mo_ta,$anh_phong,$nguoi_lon_max,$tre_em_max,$trang_thai,$dien_tich,$luot_xem,$id_loai){
         $sql="INSERT INTO phong(ten_phong,gia_phong,mo_ta,anh_phong,nguoi_lon_max,tre_em_max,trang_thai,dien_tich,luot_xem,id_loai) VALUES (?,?,?,?,?,?,?,?,?,?)";

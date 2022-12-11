@@ -37,11 +37,11 @@
     <form action="index.php?ctr=room-search" method="POST">
         <div class="checkin">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" class="myID" placeholder="Checkin" name="ngay_vao"  data-min-date=today>
+            <input type="text" id="check_in_date" placeholder="Checkin" name="ngay_vao" data-min-date=today>
         </div>
         <div class="checkout">
             <label for=""><i class="fa-solid fa-calendar-days"></i></label>
-            <input type="text" class="myID" placeholder="Checkout" name="ngay_tra"  data-min-date=today>
+            <input type="text" id="check_out_date" placeholder="Checkout" name="ngay_tra" data-min-date=today>
         </div>
         <div class="adults">
             <label for="">Người lớn</label>
@@ -72,6 +72,8 @@
         </div>
         <input type="submit" name="search" value="Check">
     </form>
+
+
     <div class="most-rooms">
         <h1>Phòng được quan tâm nhiều</h1>
         <div class="box-rooms">
@@ -83,7 +85,7 @@
             ?>
                 <div class="item-rooms">
 
-                    <a href="<?=$link_room?>">
+                    <a href="<?= $link_room ?>">
                         <img src="<?= $img ?>" height="300px" alt="">
                     </a>
                     <div class="desc">
@@ -93,11 +95,11 @@
                         </div>
                         <p style="color: #F4694C;"><?= $dien_tich ?>m2</p>
                         <p class="main-desc">
-                            <?=$mo_ta?>
+                            <?= $mo_ta ?>
                         </p>
                         <div class="buttom-desc">
-                            <p><?=$nguoi_lon_max?> Người lớn | <?=$tre_em_max?> Trẻ em</p>
-                            <a href="<?=$link_room?>">View room <i class="fa-solid fa-caret-right"></i></a>
+                            <p><?= $nguoi_lon_max ?> Người lớn | <?= $tre_em_max ?> Trẻ em</p>
+                            <a href="<?= $link_room ?>">View room <i class="fa-solid fa-caret-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -108,24 +110,52 @@
         <h1>Dịch vụ của chúng tôi</h1>
         <div class="about-service">
             <div class="item">
-                <i class="fa-solid fa-mug-saucer"></i>
-                <h3>RESTAURANT</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
+                <i class="fas fa-user-shield"></i>
+                <h3>AN TOÀN</h3>
+                <p>An ninh được đảm bảo an toàn cho quý khách.</p>
             </div>
             <div class="item">
-                <i class="fa-solid fa-leaf"></i>
-                <h3>SPA</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
+                <i class="fas fa-coffee"></i>
+                <h3>CÀ PHÊ</h3>
+                <p>Cà phê được phục vụ cho mỗi sớm mai thức dậy.</p>
             </div>
             <div class="item">
-                <i class="fa-solid fa-users"></i>
-                <h3>MEETING ROOMS</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
+                <i class="fa-solid fa-bell"></i>
+                <h3>BÁO THỨC</h3>
+                <p>Dịch vụ báo thức mỗi buổi sáng, đúng giờ.</p>
             </div>
             <div class="item">
                 <i class="fa-solid fa-wifi"></i>
-                <h3>FREE WIFI</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
+                <h3>WIFI</h3>
+                <p>Tốc độ mạng chất lượng, đường truyền ổn định.</p>
+            </div>
+        </div>
+    </div>
+    <div class="feedback-our-about">
+        <div class="box-items">
+            <div class="items">
+                <img src="./img/user.png" alt="" width="50px" height="50px">
+                <div>
+                    <h3>"Tuyệt vời"</h3>
+                    <p class="desc">Điều rất quan trọng là khách hàng phải nhận thức được nhu cầu của khách hàng.</p>
+                    <p>Khánh Nguyên</p>
+                </div>
+            </div>
+            <div class="items">
+                <img src="./img/user.png" alt="" width="50px" height="50px">
+                <div>
+                    <h3>"Thanh toán nhanh chóng"</h3>
+                    <p class="desc">Sử dụng dịch vụ thanh toán tại khách sạn rất tốt, tuyệt vời, nhiều ưu đãi.</p>
+                    <p>Ngọc Ánh</p>
+                </div>
+            </div>
+            <div class="items">
+                <img src="./img/user.png" alt="" width="50px" height="50px">
+                <div>
+                    <h3>"Dịch vụ tuyệt vời"</h3>
+                    <p class="desc">Khách sạn có nhiều vụ hướng tới nhu cầu sử dụng của khách hàng.</p>
+                    <p>Khánh An</p>
+                </div>
             </div>
         </div>
     </div>

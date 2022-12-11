@@ -1,0 +1,494 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  margin-top: 160px;
+}
+
+html {
+  font-family: 'Mulish', sans-serif;
+  height: 100%;
+}
+
+body {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.box-container {
+  min-height: 100%;
+  position: relative;
+}
+
+/* .info-user {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+.info-user i {
+    font-size: 20px;
+} */
+
+header {
+  position: fixed;
+  z-index: 10;
+  background-color: #fff;
+  width: 100%;
+}
+
+.swiper {
+  max-width: 100%;
+  height: 600px;
+  margin-top: 160px;
+}
+
+.swiper-slide {
+  position: relative;
+  background-color: #fff;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 600px;
+}
+
+.swiper-slide .text {
+  position: absolute;
+  top: 50px;
+}
+
+.swiper-slide button {
+  border: 2px solid #f4694c;
+  background-color: #f4694c;
+  color: white;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 24px;
+}
+
+.clear {
+  content: '';
+  clear: both;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+}
+.logo img {
+  width: 200px;
+  height: 150px;
+}
+.menu {
+  margin-left: 200px;
+}
+.menu ul li {
+  display: inline-block;
+  text-decoration: none;
+}
+.menu ul li a {
+  text-decoration: none;
+  padding: 15px;
+  font-size: 18px;
+  color: black;
+}
+.menu :hover {
+  color: #f4694c;
+}
+.button1 button {
+  border: 2px solid #f4694c;
+  background-color: #f4694c;
+  color: white;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.text {
+  color: white;
+  padding-left: 100px;
+  padding-top: 50px;
+}
+.text h5 {
+  font-size: 60px;
+  font-weight: normal;
+  padding: 30px 0;
+}
+.text h1 {
+  font-size: 100px;
+  font-weight: normal;
+}
+.text p {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.content1 > form {
+  background-color: #f4694c;
+  margin: 32px 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 32px;
+}
+
+.content1 > form .t-check-in,
+.t-check-out {
+  padding: 4px;
+}
+
+.content1 form > div {
+  display: flex;
+  background-color: #fff;
+  margin: 0 16px;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.content1 form label {
+  margin: 0 16px;
+  padding: 0 8px;
+}
+
+.content1 form input {
+  padding: 16px 8px;
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.content1 form input[type='submit'] {
+  padding: 16px 48px;
+  border: 1px solid #fff;
+  background-color: #f4694c;
+  cursor: pointer;
+  margin-left: 16px;
+  color: #fff;
+  border-radius: 4px;
+}
+.content1 form input[type='submit']:hover {
+  background-color: #fff;
+  color: #f4694c;
+}
+
+.content1 form select {
+  width: 100px;
+  border: none;
+  padding: 14px 0;
+}
+
+.content1 form i {
+  color: aqua;
+}
+
+.content1 .most-rooms {
+  margin: 32px 64px;
+}
+
+.content1 .most-rooms h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 40px;
+  text-align: center;
+  padding: 30px;
+}
+
+.content1 .most-rooms .box-rooms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content1 .most-rooms .item-rooms {
+  width: 400px;
+  border: 0.5px solid rgb(242, 235, 235);
+}
+
+.content1 .most-rooms .item-rooms .main-desc {
+  margin: 16px 0;
+}
+
+.content1 .most-rooms .item-rooms .desc {
+  padding: 16px;
+}
+
+.content1 .most-rooms .item-rooms img {
+  width: 100%;
+}
+
+.content1 .most-rooms .item-rooms img:hover {
+  filter: brightness(70%);
+  transition: 0.5s;
+}
+
+.item-rooms .top-desc,
+.buttom-desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-rooms .buttom-desc a {
+  text-decoration: none;
+  color: #f4694c;
+}
+
+.item-rooms .buttom-desc a:hover {
+  color: rgb(40, 117, 40);
+}
+.about-service {
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.about-service .item {
+  border: 1px solid #ccc;
+  margin: 0 16px;
+  padding: 16px 32px;
+}
+
+.about-service .item:hover {
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 20%);
+  transform: translateY(-10px);
+  transition: 0.4s;
+}
+
+.about-service .item:hover i {
+  transform: rotate(360deg);
+  transition: 0.6s;
+}
+.about-service p {
+  text-align: left;
+}
+
+.about-service h3 {
+  margin: 24px;
+}
+.block h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 40px;
+  text-align: center;
+  padding: 30px;
+}
+
+.about-service .item i {
+  font-size: 80px;
+  margin-top: 8px;
+  display: inline-block;
+  color: #ffcb05;
+}
+
+main {
+  padding: 0 64px;
+}
+
+.box-image img {
+  width: 100%;
+  height: 500px;
+}
+.room-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.room-detail .facilities {
+  margin-top: 32px;
+}
+
+.room-detail .box-facilities {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 16px;
+}
+
+.room-detail .box-facilities p {
+  margin: 16px;
+}
+.description > p {
+  max-width: 600px;
+  margin: 16px 0;
+}
+
+.booking {
+  width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.booking form input[type='date'],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 8px;
+  border: 0.5px solid #f4694c;
+}
+
+.booking form input[type='button'] {
+  background-color: #f4694c;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-top: 16px;
+  border-radius: 8px;
+  border: 0.5px solid #f4694c;
+}
+
+.booking form input[type='button']:hover {
+  color: #f4694c;
+  background-color: #fff;
+  border: 0.5px solid #f4694c;
+}
+
+.booking .form-group {
+  margin: 16px 0;
+}
+
+.box-service {
+  margin-top: 16px;
+}
+.service {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+}
+
+.service h3 {
+  margin: 8px 0;
+}
+
+.comment {
+  margin-top: 32px;
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+.comment .rating {
+  text-align: left !important;
+}
+
+.comment .rating h3 {
+  margin-bottom: 8px;
+}
+
+.comment .item-comment {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment form {
+  width: 100%;
+  text-align: right;
+}
+
+.comment form input[type='text'] {
+  width: 100%;
+  padding: 16px;
+  margin: 0 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.comment form input[type='submit'] {
+  background-color: #f4694c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-right: 16px;
+  border: 0.5px solid #f4694c;
+}
+
+.comment form input[type='submit']:hover {
+  color: #f4694c;
+  background-color: #fff;
+  border: 0.5px solid #f4694c;
+}
+
+.feedback-our-about {
+  margin: 60px 64px;
+  text-align: center;
+}
+
+.feedback-our-about > .box-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 32px;
+}
+
+.feedback-our-about > .box-items .desc {
+  margin-bottom: 24px;
+}
+
+footer {
+  background-color: #f4694c;
+  margin-top: 40px;
+  padding-bottom: 24px;
+  position: sticky;
+  top: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.box-footer {
+  display: flex;
+  color: #fff;
+  padding: 24px 64px;
+  justify-content: space-between;
+}
+
+.box-footer > div {
+  width: 300px;
+}
+.box-footer > div p {
+  margin-top: 8px;
+}
+
+.box-footer div p {
+  line-height: 1.6;
+}
+
+.box-footer div p a {
+  color: #fff;
+  text-decoration: none;
+}
+.box-footer h3 {
+  margin: 0;
+}
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.social p {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 0 8px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.social p i {
+  font-size: 24px;
+  color: #fff;
+}
+
+.social p i:hover {
+  color: rgb(40, 117, 40);
+}
+

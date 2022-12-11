@@ -12,12 +12,14 @@ include "../model/contact.php";
 include "../model/booking.php";
 include "../model/stastis.php";
 include "../model/feedback.php";
+include "../model/setting.php";
 
 $error = array();
 
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
     $ctr = $_GET['ctr'];
     switch ($ctr) {
+            // Quản lí loại phòng
         case 'list-roomtype':
             $list_roomtype = roomtype_selectall();
             include "roomtype/list.php";
@@ -42,7 +44,6 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 if (move_uploaded_file($_FILES["anh_loai"]["tmp_name"], $target_file)) {
                 } else {
                 }
-
                 if (empty($error)) {
                     roomtype_insert($ten_loai, $anh_loai);
                     $message = "Thêm thành công";
@@ -76,6 +77,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_roomtype = roomtype_selectall();
             include "roomtype/list.php";
             break;
+            // Quản lí phòng
         case 'list-room':
             $list_roomtype = roomtype_selectall();
             $list_room = room_selectall();
@@ -179,6 +181,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_room = room_selectall();
             include "room/list.php";
             break;
+            // Quản lí thư viện
         case 'list-gallery':
             $list_room = room_selectall();
             $list_gallery = gallery_selectall();
@@ -234,6 +237,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_gallery = gallery_selectall();
             include "gallery/list.php";
             break;
+            // Quản lí tài khoản
         case "list-user":
             $list_user = user_selectall();
             include "user/list.php";
@@ -248,7 +252,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $email = $_POST['email'];
                 $so_dien_thoai = $_POST['so_dien_thoai'];
                 $vai_tro = $_POST['vai_tro'];
-               
+
                 // Validate
                 if (empty($ten)) {
                     $error['ten'] = "Không được để trống";
@@ -290,11 +294,10 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                     $so_dien_thoai = $_POST['so_dien_thoai'];
                 }
 
-                if(empty($error)){
+                if (empty($error)) {
                     user_insert($ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
                     $message = "Thêm thành công";
                 }
-
             }
             include "user/add.php";
             break;
@@ -327,6 +330,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_user = user_selectall();
             include "user/list.php";
             break;
+            // Quản lí dich vụ
         case 'list-service':
             $list_room = room_selectall();
             $list_service = service_selectall();
@@ -389,8 +393,9 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_service = service_selectall();
             include "service/list.php";
             break;
+            // Quản lí đặt phòng
         case 'list-booking':
-            $list_booking = dat_phong();
+            $list_booking = booking();
             include "booking/list.php";
             break;
         case 'detail-booking':
@@ -398,14 +403,23 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $detail_booking = bookingdetail_selectall($id_dat);
             include "booking/detail.php";
             break;
+        case 'getdelete-bookingdetail':
+            $id_chi_tiet = $_GET['id_chi_tiet'];
+            $id_dat = $_GET['id_dat'];
+            bookingdetail_delete($id_chi_tiet);
+            $detail_booking = bookingdetail_selectall($id_dat);
+            include 'booking/detail.php';
+            break;
+        case 'getdelete-booking':
+            $id_dat = $_GET['id_dat'];
+            booking_delete($id_dat);
+            $list_booking = booking();
+            include 'booking/list.php';
+            break;
+            // Quản lí liên hệ
         case 'list-contact':
             $list_contact = contact_selectall();
             include "contact/list.php";
-            break;
-        case 'getdelete-booking':
-            $id_chi_tiet = $_GET['id'];
-            booking_delete($id_chi_tiet);
-            include 'booking/detail.php';
             break;
         case 'getdelete-contact':
             if (isset($_GET['id_lien_he']) && $_GET['id_lien_he'] > 0) {
@@ -414,6 +428,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_contact = contact_selectall();
             include "contact/list.php";
             break;
+            // Quản lí thống kê
         case 'list-stastis':
             $list_stastis = stastis_selectall();
             $listtk = thongke_selectall_nguoi();
@@ -424,6 +439,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             $list_stastis = stastis_selectall();
             include "stastis/diagram.php";
             break;
+            //  Quản lí phản hồi
         case 'list-feedback':
             $list_thong_ke_feedback = thong_ke_feedback();
             include "feedback/list.php";
@@ -439,6 +455,83 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             feedback_delete($id_phan_hoi);
             $items = feedback_select_by_room($id_phong);
             include 'feedback/detail.php';
+            break;
+            // Quản lí cài đặt
+        case 'list-setting':
+            $list_setting = setting_selectall();
+            include "setting/list.php";
+            break;
+        case 'add-setting':
+            if (isset($_POST['email'])) {
+                $logo = $_FILES['logo']['name'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $dien_thoai = $_POST['dien_thoai'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                //Validate
+                if (empty($email)) {
+                    $error['email'] = "Không được để trống email";
+                } else {
+                    $email = $_POST['email'];
+                }
+
+                if (empty($dia_chi)) {
+                    $error['dia_chi'] = "Không được để trống địa chỉ";
+                } else {
+                    $dia_chi = $_POST['dia_chi'];
+                }
+
+                if (empty($dien_thoai)) {
+                    $error['dien_thoai'] = "Không được để trống điện thoại";
+                } else {
+                    $dien_thoai = $_POST['dien_thoai'];
+                }
+
+                if (empty($logo)) {
+                    $error['logo'] = "Vui lòng chọn ảnh";
+                } else {
+                    $logo = $_FILES['logo']['name'];
+                }
+
+                if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                if (empty($error)) {
+                    setting_insert($logo, $email, $dia_chi, $dien_thoai);
+                    $message = "Thêm thành công";
+                }
+            }
+            $list_setting = setting_selectall();
+            include "setting/add.php";
+            break;
+        case 'getdelete-setting':
+            if (isset($_GET['id_cai_dat']) && $_GET['id_cai_dat'] > 0) {
+                setting_delete($_GET['id_cai_dat']);
+            }
+            $list_setting = setting_selectall();
+            include "setting/list.php";
+            break;
+        case 'getupdate-setting':
+            if (isset($_GET['id_cai_dat']) && $_GET['id_cai_dat'] > 0) {
+                $setting_one = setting_getone($_GET['id_cai_dat']);
+            }
+            include "setting/update.php";
+            break;
+        case 'update-setting':
+            if (isset($_POST['update'])) {
+                $id_cai_dat = $_POST['id_cai_dat'];
+                $logo = $_FILES['logo']['name'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $dien_thoai = $_POST['dien_thoai'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
+                setting_update($id_cai_dat, $logo, $email, $dia_chi, $dien_thoai);
+            }
+            $list_setting = setting_selectall();
+            include "setting/list.php";
             break;
         case 'logout':
             session_destroy();

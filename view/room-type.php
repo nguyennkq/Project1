@@ -17,7 +17,7 @@
                     echo
                     '
             <div class="rct1">
-            <img src="' . $img . '" alt="">
+            <a href="' . $link_roomtype . '"><img src="' . $img . '" alt=""></a>
             <h3>' . $ten_loai . '</h3>
            
             <div class="price">
@@ -31,11 +31,3 @@
     </div>
 
 </main>
-
-<!-- <div class="list">
-    <li>1 phòng tắm</li>
-    <li>2 giường</li>
-    <li>2-3 người</li>
-</div> -->
-
-<!-- <p>2,000,000 per night</p> -->

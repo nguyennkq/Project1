@@ -11,14 +11,16 @@
         <?php
         foreach ($list_booking as $booking) {
             extract($booking);
-            $link = "index.php?ctr=detail-booking&id_dat=" . $id;
+            $view = "index.php?ctr=detail-booking&id_dat=" . $id;
+            $delete = "index.php?ctr=getdelete-booking&id_dat=" . $id;
             echo '<tr>
                             <td>' . $id . '</td>
-                            <td>' . $id_nguoi . '</td>
+                            <td>' . $ho_ten . '</td>
                             <td>' . $ngay_dat . '</td>
                             <td>' . $tong_tien . '</td>
                             <td>
-                                <a href="' . $link . '"><input type="button" value="Xem"></a>
+                                <a href="' . $view . '"><input type="button" value="Xem"></a>
+                                <a href="' . $delete . '"><input type="button" value="Xóa"></a>
                             </td>
                         </tr>';
         }

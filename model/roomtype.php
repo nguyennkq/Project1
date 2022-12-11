@@ -41,3 +41,9 @@
         $sql="SELECT * FROM loai_phong WHERE id_loai=?";
         return pdo_query_one($sql,$id_loai);
     }
+
+    function room_same_type($id_loai,$id_phong){
+        $sql = "SELECT * FROM phong WHERE id_loai=".$id_loai." AND id_phong <> ".$id_phong;
+        return pdo_query($sql);
+    }
+?>

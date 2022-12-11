@@ -59,6 +59,10 @@
                         <i class="fa-solid fa-comment"></i>
                         <a href="index.php?ctr=list-feedback">Phản hồi</a>
                     </li>
+                    <li>
+                        <i class="fa-solid fa-gear"></i>
+                        <a href="index.php?ctr=list-setting">Cài đặt</a>
+                    </li>
                 </ul>
             </nav>
         </div>

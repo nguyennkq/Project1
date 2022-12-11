@@ -1,6 +1,6 @@
 <?php
+// ZP6c95(Iu\H_FiO(
 session_start();
-include "view/header.php";
 include "global.php";
 include "model/pdo.php";
 include "model/room.php";
@@ -11,9 +11,13 @@ include "model/gallery.php";
 include "model/service.php";
 include "model/feedback.php";
 include "model/booking.php";
+include "model/setting.php";
+$list_setting = setting_selectall();
 include "view/config-vnpay.php";
+include "view/header.php";
 
 
+$error = array();
 $top3 = room_selectall_top3();
 if (!isset($_SESSION['booking'])) $_SESSION['booking'] = [];
 if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
@@ -151,7 +155,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 if ($flag == true) {
                     $id = $_SESSION['user']['id_nguoi'];
                     user_update_password($id, $passnew);
-                    $message="Đổi mk thành công";
+                    $message = "Đổi mk thành công";
                 }
             }
             include 'view/account/change-password.php';
@@ -161,6 +165,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $id_nguoi = $_POST['id_nguoi'];
                 $ten = $_POST['ten'];
                 $ho_ten = $_POST['ho_ten'];
+                $mat_khau = $_POST['mat_khau'];
                 $dia_chi = $_POST['dia_chi'];
                 $cmnd = $_POST['cmnd'];
                 $email = $_POST['email'];
@@ -169,11 +174,12 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 user_update($id_nguoi, $ten, $ho_ten, $dia_chi, $mat_khau, $cmnd, $email, $so_dien_thoai, $vai_tro);
                 $_SESSION['user'] = check_user($ten, $mat_khau);
                 header('Location: index.php?ctr=update-user');
-                $message = 'Cập nhật thành công';
             }
+            $message = 'Cập nhật thành công';
             include 'view/account/update-user.php';
             break;
         case 'info-user':
+            // Trang cá nhân người dùng
             include 'view/account/info-user.php';
             break;
         case 'logout':
@@ -181,18 +187,19 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             header("Location: index.php");
             break;
         case 'roomtype':
-            // $search_room=search_room($nguoi_lon_max,$tre_em_max);
+            // Trang loại phòng
             $list_roomtype = roomtype_selectall();
             include 'view/room-type.php';
             break;
         case 'room';
+            // Trang phòng
             $id_loai = $_GET['id_loai'];
             $list_room = room_selectallbyid($id_loai);
             $ten_loai = name_roomtype($id_loai);
-            // $anh_loai= name_roomtype($id_loai);
             include "view/room.php";
             break;
         case 'room-search':
+            // Tìm kiếm phòng theo người
             if (isset($_POST['search']) && ($_POST['search'])) {
                 $nguoi_lon = $_POST['nguoi_lon'];
                 $tre_em = $_POST['tre_em'];
@@ -215,8 +222,8 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             if (isset($_GET['id_phong']) && ($_GET['id_phong'] > 0)) {
                 $id_phong = $_GET['id_phong'];
                 $room_one = room_getone($id_phong);
-                // extract($id_phong);
-                // $room_same_type = room_same_type($id_phong, $id_loai);
+                extract($room_one);
+                $room_same_type = room_same_type($id_loai, $id_phong);
                 room_view($id_phong);
                 $load_gallery_room = load_gallery_room($id_phong);
                 $load_service_room = load_service_room($id_phong);
@@ -236,8 +243,25 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                 $nguoi_lon = $_POST['nguoi_lon'];
                 $tre_em = $_POST['tre_em'];
                 $thanh_tien = $so_luong * $gia_phong;
+                if (empty($ngay_vao)) {
+                    $error['ngay_vao'] = "Không được để trống ngày vào";
+                } else {
+                    $ngay_vao = $_POST['ngay_vao'];
+                }
+                if (empty($ngay_tra)) {
+                    $error['ngay_tra'] = "Vui lòng chọn ngày trả";
+                } else {
+                    $ngay_tra = $_POST['ngay_tra'];
+                }
+                if (empty($nguoi_lon)) {
+                    $error['nguoi_lon'] = "Vui lòng chọn người lớn";
+                } else {
+                    $nguoi_lon = $_POST['nguoi_lon'];
+                }
                 $add = [$id_phong, $ten_phong, $anh_phong, $gia_phong, $so_luong, $thanh_tien, $ngay_vao, $ngay_tra, $nguoi_lon, $tre_em];
-                array_push($_SESSION['booking'], $add);
+                if (empty($error)) {
+                    array_push($_SESSION['booking'], $add);
+                }
             }
             include 'view/booking-detail.php';
             break;
@@ -280,7 +304,7 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                         }
                         unset($_SESSION['booking']);
                     }
-                    include "view/booking-info.php";
+                    // include "view/booking-info.php";
                 } else if ($thanh_toan == 3) {
                     $vnp_TxnRef = $code_order; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
                     $vnp_OrderInfo = 'Thanh toán hóa đơn';
@@ -311,9 +335,6 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
                         $inputData['vnp_BankCode'] = $vnp_BankCode;
                     }
-                    // if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-                    //     $inputData['vnp_Bill_State'] = $vnp_Bill_State;
-                    // }
 
                     //var_dump($inputData);
                     ksort($inputData);
@@ -351,13 +372,13 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
                             unset($_SESSION['booking']);
                         }
                         header('Location: ' . $vnp_Url);
-                        die();
+                        // die();
                     } else {
                         echo json_encode($returnData);
                     }
                 }
             }
-            // include "view/booking-info.php";
+            include "view/booking-info.php";
             break;
         case 'contact':
             if (isset($_POST['contact']) && ($_POST['contact'])) {
@@ -382,7 +403,6 @@ if (isset($_GET['ctr']) && ($_GET['ctr'] != '')) {
             break;
     }
 } else {
-
     include "view/home.php";
 }
 

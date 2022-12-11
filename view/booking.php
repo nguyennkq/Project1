@@ -64,7 +64,7 @@
         ?>
     </table>
 
-   
+
     <form class="form-booking" action="index.php?ctr=pay-booking" method="post" name="forms" enctype="multipart/form-data">
         <input type="hidden" name="id_nguoi" value="<?php
                                                     if (isset($_SESSION['user'])) echo $_SESSION['user']['id_nguoi'];
@@ -76,7 +76,7 @@
         </h1>
         <div class="box-content">
             <div>
-              
+
                 <label>Họ và Tên</label><br>
                 <input type="text" name="ho_ten" value="<?php
                                                         if (isset($_SESSION['user'])) echo $_SESSION['user']['ho_ten'];
@@ -98,11 +98,24 @@
         </div>
         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
         <ul>
-            <li><input type="radio" name="thanh_toan" value="1" >Thanh toán tiền mặt</li>
+            <li><input type="radio" name="thanh_toan" value="1">Thanh toán tiền mặt</li>
             <li><input type="radio" name="thanh_toan" value="2">Chuyển khoản ngân hàng</li>
             <li><input type="radio" name="thanh_toan" value="3" checked>Thanh toán VNPAY</li>
         </ul>
-        <input type="submit" value="Đặt phòng"  name="redirect" id="redirect">
-        <input type="reset" value="Nhập lại">
+        <?php
+        if (isset($_SESSION['user'])) {
+            echo
+            '
+                <input type="submit" value="Đặt phòng"  name="redirect" id="redirect">
+                <input type="reset" value="Nhập lại">
+                ';
+        } else {
+            echo
+            '
+                <p style="color:red;">Bạn phải đăng nhập để thanh toán</p>
+            ';
+        }
+        ?>
+
     </form>
 </div>

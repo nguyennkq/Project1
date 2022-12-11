@@ -1,7 +1,7 @@
 <div class="booking-done1">
     <?php
     if (isset($_SESSION['id_dat']) && ($_SESSION['id_dat'] > 0)) {
-        $show_detail = bookingdetail_selectall($id_dat);
+        $show_detail = bookingdetail_selectall($_SESSION['id_dat']);
         if ((isset($show_detail)) && (count($show_detail) > 0)) {
             echo
             '
@@ -23,7 +23,7 @@
                 echo '
                 <tbody>
                     <tr>
-                        <td><img src="' . $img . '" width="200px" height="200px" alt=""></td>
+                        <td><img src="upload/' . $img . '" width="200px" height="200px" alt=""></td>
                         <td>
                             <p>Tên phòng: <span> ' . $show['ten_phong'] . '</span></p>
                             <p>Đặt phòng từ: <span>' . $show['ngay_vao'] . '</span> đến <span>' . $show['ngay_tra'] . '</span></p>
@@ -64,7 +64,7 @@
                                                                 $message = "Chuyển khoản ngân hàng";
                                                                 break;
                                                             case '3':
-                                                                $message = "Thanh toán online";
+                                                                $message = "Thanh toán VnPay";
                                                                 break;
                                                             default:
                                                                 $message = "Chưa có thông tin thanh toán";

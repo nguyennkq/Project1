@@ -43,82 +43,43 @@ $img_room = $img_path . $anh_phong;
                 <h1>Mô tả chi tiết phòng</h1>
                 <p><?= $mo_ta ?></p>
                 <div class="facilities">
-                    <h3>Room facilities</h3>
+                    <h3>Tiện ích</h3>
                     <div class="box-facilities">
                         <p>
                             <img src="./img/ic_bedroom.png" alt="">
-                            1 bedroom
+                            1 phòng ngủ
                         </p>
                         <p>
                             <img src="./img/ic_livingroom.png" alt="">
-                            1 living room
+                            1 phòng khách
                         </p>
                         <p>
                             <img src="./img/ic_bathroom.png" alt="">
-                            1 bathroom
+                            1 phòng tắm
                         </p>
                         <p>
                             <img src="./img/ic_diningroom 1.png" alt="">
-                            1 dining room
+                            1 phòng ăn
                         </p>
                         <p>
                             <img src="./img/ic_wifi 1.png" alt="">
                             10 mbp/s
                         </p>
                         <p>
-                            <img src="./img/ic_ac 1.png" alt="">
-                            1 unit ready
-                        </p>
-                        <p>
                             <img src="./img/ic_kulkas.png" alt="">
-                            2 refigrator
+                            2 tủ lạnh
                         </p>
                         <p>
                             <img src="./img/ic_tv.png" alt="">
-                            2 television
+                            1 tivi
                         </p>
                     </div>
                 </div>
             </div>
-            <!-- <div class="booking">
-                <form action="index.php?ctr=addcart" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id_phong" value="<?= $id_phong ?>">
-                    <input type="hidden" name="ten_phong" value="<?= $ten_phong ?>">
-                    <input type="hidden" name="anh_phong" value="<?= $img_room ?>">
-                    <input type="hidden" name="gia_phong" value="<?= $gia_phong ?>">
-                    <div class="form-group">
-                        Check in
-                        <input type="date" name="ngay_vao">
-                    </div>
-                    <div class="form-group">
-                        Check out
-                        <input type="date" name="ngay_tra">
-                    </div>
-                    <div class="form-group">
-                        Người lớn
-                        <select name="nguoi_lon" id="">
-                            <option value="" selected hidden>No of Adults</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        Trẻ em
-                        <select name="tre_em" id="">
-                            <option value="" selected hidden>No of Children</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
 
-                    <input type="submit" name="addcart" value="Continue to book">
-                </form>
-            </div> -->
         </div>
         <div class="box-service">
-            <h3>Service</h3>
+            <h3>Dịch vụ</h3>
             <div class="service">
                 <?php
                 foreach ($load_service_room as $service_room) {
@@ -135,6 +96,52 @@ $img_room = $img_path . $anh_phong;
                 ?>
             </div>
         </div>
+        <div class="hotel-rules">
+            <h3>Nội quy chung</h3>
+            <ul>
+                <li>-Không hút thuốc, tiệc tùng, hoặc sự kiện</li>
+                <li>-Giờ nhận phòng từ 8:00</li>
+                <li>-Không nuôi động vật</li>
+            </ul>
+        </div>
+        <div class="room-same">
+            <h3>Phòng cùng loại</h1>
+                <div class="item-room-same">
+                    <?php
+                    foreach ($room_same_type as $room_same) {
+                        extract($room_same);
+                        $img_phong = $img_path . $anh_phong;
+                        $link_phong = "index.php?ctr=roomdetail&id_phong=" . $id_phong;
+                        // echo
+                        // '
+                    ?>
+                        <div class="box-item-room">
+                            <a href="<?= $link_phong ?>">
+                                <img src="<?= $img_phong ?>" alt="">
+                            </a>
+                            <div class="desc">
+                                <div class="top-desc">
+                                    <h3><?= $ten_phong ?></h3>
+                                    <p><?= $gia_phong ?> VNĐ/Ngày</p>
+                                </div>
+                                <p style="color: #F4694C;"><?= $dien_tich ?>m2</p>
+                                <p class="main-desc">
+                                    <?= $mo_ta ?>
+                                </p>
+                                <div class="buttom-desc">
+                                    <p><?= $nguoi_lon_max ?> Người lớn | <?= $tre_em_max ?> Trẻ em</p>
+                                    <a href="index.php?ctr=roomdetail&id_phong=<?= $id_phong ?>">View room <i class="fa-solid fa-caret-right"></i></a>
+                                </div>
+                                <button><?= $trang_thai == 1 ? 'Còn trống' : 'Đã đặt' ?></button>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+        </div>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             //  jQuery là thư viện được viết từ JavaScript

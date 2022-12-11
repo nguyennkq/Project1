@@ -1,7 +1,7 @@
 <div class="container">
   <div class="banner-service">
     <img src="./img/banner_service.jpg" alt="" />
-    <p>GALLERY</p>
+    <p>THƯ VIỆN ẢNH</p>
   </div>
     <div class="box-service-page">
       <?php
